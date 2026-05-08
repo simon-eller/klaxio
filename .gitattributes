@@ -1,0 +1,3 @@
+# Exclude vendor/third-party files from GitHub language statistics
+
+wwwroot/*        linguist-vendored

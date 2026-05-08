@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLAXIO</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/material-symbols-rounded.css" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.svg">
+
+    <style>
+        /* Background image */
+        body::before {
+            content: "";
+            position: fixed; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .player-panel { transition: all .4s cubic-bezier(.16,1,.3,1); overflow: hidden; background: var(--bs-body-secondary-bg); }
+        .player-panel.winner { background: rgba(var(--bs-primary-rgb), .2) !important; border-color: var(--bs-primary) !important; }
+        .player-panel.correct{ background: rgba(var(--bs-success-rgb), .2) !important; border-color: var(--bs-success) !important; }
+        .player-panel.wrong  { background: rgba(var(--bs-danger-rgb),  .2) !important; border-color: var(--bs-danger)  !important; }
+        .player-panel.loser  { opacity: .28; filter: grayscale(.6); }
+
+        /* Score bump animation */
+        .score-badge.bump { animation: bump .4s cubic-bezier(.36,.07,.19,.97); }
+        @keyframes bump {
+            0%  { transform: scale(1); }
+            40% { transform: scale(1.35); color: #22d97a; }
+            100%{ transform: scale(1); }
+        }
+
+        /* Vertical text */
+        #phase-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            letter-spacing: .15em;
+            transition: color .3s;
+            user-select: none;
+        }
+
+        #phase-label.armed  { color: var(--bs-warning) !important; }
+        #phase-label.buzzed { color: var(--bs-primary) !important; }
+        #phase-label.correct{ color: var(--bs-success) !important; }
+        #phase-label.wrong  { color: var(--bs-danger)  !important; }
+
+        /* Simple fade in toast */
+        #toast {
+            position: fixed; bottom: 80px; left: 50%;
+            transform: translateX(-50%) translateY(16px);
+            opacity: 0; pointer-events: none;
+            transition: all .3s; z-index: 1055; white-space: nowrap;
+        }
+        #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* 7. Connection dot glow when online */
+        #conn-dot.ok { box-shadow: 0 0 6px var(--bs-success); }
+    </style>
+</head>
+
+<body class="bg-body text-body overflow-hidden" style="min-height:100vh">
+
+    <nav class="navbar navbar-expand-lg border-secondary-subtle bg-body-tertiary px-4 py-2">
+    	<div class="container-fluid">
+    		<a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="bg-primary rounded-3 p-1 d-inline-flex align-items-center justify-content-center me-2" style="width:30px; height:30px">
+                    <svg
+                        class="text-white"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#000"
+                        version="1.1"
+                        id="svg1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:svg="http://www.w3.org/2000/svg">
+                        <defs
+                        id="defs1" />
+                        <path
+                        id="path5"
+                        style="fill:currentColor;stroke-width:3423.91;stroke-linecap:round;stroke-linejoin:round"
+                        d="M 120 -848.4375 C 98 -848.4375 79.182292 -840.58854 63.515625 -824.92188 C 47.848958 -809.25521 40 -790.4375 40 -768.4375 L 40 -628.4375 L 40 -488.4375 C 40 -466.4375 47.848958 -447.54167 63.515625 -431.875 C 79.182292 -416.20833 98 -408.4375 120 -408.4375 C 142 -408.4375 160.81771 -416.20833 176.48438 -431.875 C 192.15104 -447.54167 200 -466.4375 200 -488.4375 L 200 -768.4375 C 200 -790.4375 192.15104 -809.25521 176.48438 -824.92188 C 160.8177 -840.58854 142 -848.4375 120 -848.4375 z M 559.53125 -844.92188 C 551.19792 -845.25521 543 -844.07292 535 -841.40625 L 338.98438 -786.40625 C 321.65105 -781.07292 307.48437 -771.42188 296.48438 -757.42188 C 285.48438 -743.42188 280 -727.375 280 -709.375 L 280 -589.375 L 280 -472.42188 C 280 -454.42188 286.18229 -439.20833 298.51562 -426.875 C 310.84895 -414.54167 325.98438 -408.4375 343.98438 -408.4375 L 345 -408.4375 C 350.33333 -408.4375 355.19792 -408.92188 359.53125 -409.92188 C 363.86458 -410.92188 368.30208 -412.10417 372.96875 -413.4375 L 641.01562 -513.4375 C 652.34895 -518.10417 661.65105 -525.60417 668.98438 -535.9375 C 676.31771 -546.27083 680 -557.72396 680 -570.39062 C 680 -581.05729 676.3177 -590.08854 668.98438 -597.42188 C 661.65104 -604.75521 652.69792 -608.4375 642.03125 -608.4375 L 520 -608.4375 L 467.96875 -588.4375 C 462.63542 -586.4375 457.63542 -586.4375 452.96875 -588.4375 C 448.30208 -590.4375 444.96875 -594.04167 442.96875 -599.375 C 440.96875 -604.70833 441.1823 -609.92188 443.51562 -614.92188 C 445.84896 -619.92188 449.66667 -623.39062 455 -625.39062 L 520 -648.4375 L 800 -648.4375 C 821.33333 -648.4375 840.01562 -656.07292 856.01562 -671.40625 C 872.01562 -686.73958 880 -705.77083 880 -728.4375 L 583.98438 -839.375 C 575.98438 -842.70833 567.86458 -844.58855 559.53125 -844.92188 z M 660 -328.4375 C 538.49734 -328.4375 439.99998 -304.7672 440 -275.625 L 440 -270.3125 C 430.72654 -268.20727 422.52238 -263.45988 415.3125 -256.25 C 405.12917 -246.06667 400 -233.83125 400 -219.53125 L 400 -163.59375 C 400 -149.29375 405.12917 -137.05834 415.3125 -126.875 C 425.49584 -116.69167 437.73125 -111.5625 452.03125 -111.5625 L 867.96875 -111.5625 C 882.26875 -111.5625 894.5041 -116.69167 904.6875 -126.875 C 914.8708 -137.05834 920 -149.29375 920 -163.59375 L 920 -219.53125 C 920 -233.83125 914.8708 -246.06667 904.6875 -256.25 C 897.47758 -263.45987 889.27343 -268.20726 880 -270.3125 L 880 -275.625 C 880.00002 -304.7672 781.50266 -328.4375 660 -328.4375 z " />
+                    </svg>
+                </div>
+
+    			<span class="fs-3 fw-bold text-primary">KLAX</span>
+    			<span class="fs-3 fw-bold">IO</span>
+    		</a>
+
+    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Navigation ausklappen">
+    			  <span class="navbar-toggler-icon"></span>
+    		</button>
+
+    		<div class="collapse navbar-collapse" id="navbarContent">
+    			<div class="pt-3 pt-lg-0 ms-auto d-flex align-items-center">
+    				<ul class="navbar-nav">
+    					<li class="nav-item dropdown">
+       						<a class="nav-link dropdown-toggle icon-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="material-symbols-rounded align-middle fs-5">globe</span>
+                                <span id="lang-label">EN</span>
+                            </a>
+    						<ul class="dropdown-menu show" data-bs-popper="static">
+       							<li><a class="dropdown-item" href="#" onclick="setLang('en'); return false;">English</a></li>
+       							<li><a class="dropdown-item" href="#" onclick="setLang('de'); return false;">Deutsch</a></li>
+    						</ul>
+    					</li>
+    				</ul>
+
+                    <span id="conn-dot" class="badge rounded-circle p-1 ms-2 bg-danger" style="height: 1px; width: 1px;">&nbsp;</span>
+                    <span id="conn-text" class="ms-2">Connecting...</span>
+    			</div>
+
+    		</div>
+    	</div>
+    </nav>
+
+    <main class="p-3" style="height:calc(100vh - 155px)">
+        <div class="d-flex gap-3 h-100">
+
+            <!-- Player 1 -->
+            <div class="player-panel card border flex-grow-1 rounded-4" id="panel-0">
+                <div class="rounded-4"></div>
+                <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
+                    <div class="fw-bold fs-2 text-center" id="name-0">Player 1</div>
+                    <div class="display-1 fw-bold score-badge" id="score-0">0</div>
+                    <div class="fs-1 text-center" id="icon-0"></div>
+                </div>
+            </div>
+
+            <!-- Centre column -->
+            <div class="d-flex flex-column align-items-center justify-content-center" style="width:80px; flex-shrink:0">
+                <div class="flex-grow-1 border-start border-secondary-subtle"></div>
+                <div id="phase-label" class="text-secondary small fw-semibold my-2">READY</div>
+                <div class="flex-grow-1 border-start border-secondary-subtle"></div>
+            </div>
+
+            <!-- Player 2 -->
+            <div class="player-panel card border flex-grow-1 rounded-4 position-relative" id="panel-1">
+                <div class="rounded-4"></div>
+                <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
+                    <div class="fw-bold fs-2 text-center" id="name-1">Player 2</div>
+                    <div class="display-1 fw-bold score-badge" id="score-1">0</div>
+                    <div class="fs-1 text-center" id="icon-1"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-top border-secondary-subtle bg-body-tertiary py-4 px-4 fixed-bottom">
+        <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap">
+            <button id="btn-arm" class="btn btn-warning fw-semibold icon-link" onclick="send('arm')">
+                <span class="material-symbols-rounded">play_arrow</span>
+                UNLOCK BUZZERS
+            </button>
+
+            <button id="btn-correct" class="btn btn-success fw-semibold icon-link" onclick="send('correct')" disabled>
+                <span class="material-symbols-rounded">thumb_up</span>
+                Correct
+            </button>
+
+            <button id="btn-wrong" class="btn btn-danger fw-semibold icon-link" onclick="send('wrong')" disabled>
+                <span class="material-symbols-rounded">thumb_down</span>
+                Wrong
+            </button>
+
+            <button id="btn-reset" class="btn btn-secondary fw-semibold icon-link" onclick="send('reset')" disabled>
+                <span class="material-symbols-rounded">refresh</span>
+                New Question
+            </button>
+
+            <button id="btn-scores" class="btn btn-outline-secondary fw-semibold icon-link" onclick="resetScores()">
+                <span class="material-symbols-rounded">restart_alt</span>
+                Reset Scores
+            </button>
+        </div>
+    </footer>
+
+    <div id="toast" class="badge text-bg-secondary rounded-pill px-4 py-2 fs-6 fw-normal"></div>
+
+    <script>
+      // i18n
+      let S = {};
+      let currentLang = "en";
+
+      function applyStrings(strings) {
+          S = strings;
+          document.getElementById("btn-arm").innerHTML = `<span class="material-symbols-rounded">play_arrow</span> ${S.btnArm ?? "UNLOCK BUZZERS"}`;
+          document.getElementById("btn-correct").innerHTML = `<span class="material-symbols-rounded">thumb_up</span> ${S.btnCorrect ?? "Correct"}`;
+          document.getElementById("btn-wrong").innerHTML = `<span class="material-symbols-rounded">thumb_down</span> ${S.btnWrong ?? "Wrong"}`;
+          document.getElementById("btn-reset").innerHTML = `<span class="material-symbols-rounded">refresh</span> ${S.btnReset ?? "New Question"}`;
+          document.getElementById("btn-scores").innerHTML = `<span class="material-symbols-rounded">restart_alt</span> ${S.btnResetScores ?? "Reset Scores"}`;
+          document.getElementById("conn-text").textContent = connected
+          ? (S.connConnected ?? "Connected") : (S.connConnecting ?? "Connecting...");
+          applyPhaseLabel(currentPhase);
+      }
+
+      function setLang(lang) {
+          currentLang = lang;
+          document.getElementById("lang-label").textContent = lang === "de" ? "DE" : "EN";
+          send("lang_" + currentLang);
+      }
+
+      // WebSocket
+      const WS_URL = "ws://localhost:8765";
+      let ws = null, connected = false, reconnectTimer = null;
+
+      function connect() {
+          ws = new WebSocket(WS_URL);
+          ws.onopen = () => {
+            connected = true;
+            const dot = document.getElementById("conn-dot");
+            dot.classList.replace("bg-danger", "bg-success");
+            dot.classList.add("ok");
+            document.getElementById("conn-text").textContent = S.connConnected ?? "Connected";
+            toast(S.toastConnected ?? "Server connected ✓");
+            clearTimeout(reconnectTimer);
+          };
+          ws.onclose = () => {
+            connected = false;
+            const dot = document.getElementById("conn-dot");
+            dot.classList.replace("bg-success", "bg-danger");
+            dot.classList.remove("ok");
+            document.getElementById("conn-text").textContent = S.connReconnecting ?? "Disconnected - reconnecting...";
+            reconnectTimer = setTimeout(connect, 2000);
+          };
+
+          ws.onerror = () => ws.close();
+          ws.onmessage = ({ data }) => {
+            try { handleEvent(JSON.parse(data)); } catch(e) { console.error("WS parse error", e); }
+          };
+      }
+
+      function send(cmd) {
+          if (ws && ws.readyState === WebSocket.OPEN)
+          ws.send(JSON.stringify({ cmd }));
+      }
+
+      // State machine
+      let currentPhase = "waiting", currentWinner = null;
+
+      function handleEvent(msg) {
+        if (msg.strings) applyStrings(msg.strings);
+        if (msg.names) {
+          document.getElementById("name-0").textContent = msg.names[0];
+          document.getElementById("name-1").textContent = msg.names[1];
+        }
+          switch (msg.event) {
+            case "init":
+                document.getElementById("name-0").textContent = msg.names[0];
+                document.getElementById("name-1").textContent = msg.names[1];
+                updateScores(msg.scores);
+                applyPhase(msg.phase, null);
+                break;
+            case "armed": applyPhase("armed",   null); break;
+            case "buzzed":
+              applyPhase("buzzed",  msg.winner);
+              toast((S.toastBuzzed ?? "{0} buzzed first!").replace("{0}", msg.name));
+              break;
+            case "correct":
+              applyPhase("correct", msg.winner);
+              updateScores(msg.scores, msg.winner);
+              break;
+            case "wrong":
+              applyPhase("wrong",   msg.winner);
+              break;
+            case "reset":
+              applyPhase("waiting", null);
+              break;
+            case "reset_scores":
+              updateScores(msg.scores);
+              applyPhase("waiting", null);
+              break;
+          }
+      }
+
+      function applyPhase(phase, winner) {
+          currentPhase = phase; currentWinner = winner;
+          [0, 1].forEach(i => {
+            document.getElementById(`panel-${i}`).classList.remove("winner","loser","correct","wrong");
+            document.getElementById(`icon-${i}`).innerHTML = phaseIcon(phase, i, winner);
+          });
+
+          if (winner !== null) {
+            const stateClass = phase === "buzzed" ? "winner" : phase === "correct" ? "correct" : phase === "wrong" ? "wrong" : "";
+            if (stateClass) document.getElementById(`panel-${winner}`).classList.add(stateClass);
+            document.getElementById(`panel-${1-winner}`).classList.add("loser");
+          }
+
+          applyPhaseLabel(phase);
+          document.getElementById("btn-arm").disabled = phase === "armed" || phase === "buzzed";
+          document.getElementById("btn-correct").disabled = phase !== "buzzed";
+          document.getElementById("btn-wrong").disabled = phase !== "buzzed";
+          document.getElementById("btn-reset").disabled = phase === "waiting" || phase === "armed";
+      }
+
+      function applyPhaseLabel(phase) {
+          const el = document.getElementById("phase-label");
+          el.className = `text-secondary small fw-semibold my-2 ${phase}`;
+          const map = {
+            waiting: S.phaseReady   ?? "READY",
+            armed:   S.phaseArmed   ?? "BUZZ!",
+            buzzed:  S.phaseBuzzed  ?? "BUZZED",
+            correct: S.phaseCorrect ?? "CORRECT",
+            wrong:   S.phaseWrong   ?? "WRONG",
+          };
+          el.textContent = map[phase] ?? phase.toUpperCase();
+      }
+
+      function phaseIcon(phase, idx, winner) {
+          const icon = name => `<span class="material-symbols-rounded fs-1">${name}</span>`;
+
+          if (phase === "armed") return icon("my_location");
+          if (phase === "buzzed"  && idx === winner) return icon("notifications_active");
+          if (phase === "correct" && idx === winner) return icon("check_circle");
+          if (phase === "wrong"   && idx === winner) return icon("cancel");
+          if (["buzzed","correct","wrong"].includes(phase) && idx !== winner) return icon("hourglass_empty");
+          return icon("radio_button_unchecked");
+      }
+
+      function updateScores(scores, bumped = null) {
+          [0, 1].forEach(i => {
+            const el = document.getElementById(`score-${i}`);
+            el.textContent = scores[i];
+
+            if (i === bumped) {
+                el.classList.remove("bump");
+                void el.offsetWidth;
+                el.classList.add("bump");
+            }
+          });
+      }
+
+      function resetScores() {
+        if (confirm(S.confirmReset ?? "Really reset scores?")) send("reset_scores");
+      }
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", e => {
+          if (e.target.tagName === "INPUT") return;
+
+          if (e.code === "Space" || e.code === "Enter") {
+            e.preventDefault();
+            if (currentPhase === "waiting") send("arm");
+            else if (currentPhase !== "armed") send("reset");
+          }
+
+          if (e.key === "+" || e.key === "1") send("correct");
+          if (e.key === "-" || e.key === "0") send("wrong");
+          if (e.key === "r" || e.key === "R") send("reset");
+      });
+
+      // Toast
+      let toastTimer = null;
+      function toast(msg) {
+          const el = document.getElementById("toast");
+          el.textContent = msg;
+          el.classList.add("show");
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => el.classList.remove("show"), 2500);
+      }
+
+      connect();
+    </script>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

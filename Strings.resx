@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter</value></resheader>
+
+  <!-- Console / Server strings -->
+  <data name="AppTitle"          xml:space="preserve"><value>KLAXIO</value></data>
+  <data name="BtSearching"       xml:space="preserve"><value>[BT] Searching for Echo Buttons...</value></data>
+  <data name="BtFound"           xml:space="preserve"><value>[BT] Button found: {0}</value></data>
+  <data name="BtNone"            xml:space="preserve"><value>[BT] No paired Echo Buttons found. Please pair them in Windows first.</value></data>
+  <data name="BtConnected"       xml:space="preserve"><value>[BT] Connected: {0}</value></data>
+  <data name="BtDisconnected"    xml:space="preserve"><value>[BT] Disconnected: {0}</value></data>
+  <data name="BtnPressed"        xml:space="preserve"><value>[BTN] Pressed: {0} → Player {1}</value></data>
+  <data name="WsListening"       xml:space="preserve"><value>[WS] Server listening on {0}</value></data>
+  <data name="WsClientConn"      xml:space="preserve"><value>[WS] Client connected: {0}</value></data>
+  <data name="WsClientDisconn"   xml:space="preserve"><value>[WS] Client disconnected: {0}</value></data>
+  <data name="QuizArmed"         xml:space="preserve"><value>[QUIZ] Buzzers unlocked.</value></data>
+  <data name="QuizCorrect"       xml:space="preserve"><value>[QUIZ] Correct! Player {0} gets a point → {1}</value></data>
+  <data name="QuizWrong"         xml:space="preserve"><value>[QUIZ] Wrong! Player {0} gets no point.</value></data>
+  <data name="QuizReset"         xml:space="preserve"><value>[QUIZ] New question.</value></data>
+  <data name="QuizResetScores"   xml:space="preserve"><value>[QUIZ] Scores reset.</value></data>
+  <data name="Hotkeys"           xml:space="preserve"><value>Hotkeys: [A] Arm  [C] Correct  [W] Wrong  [R] Reset  [Q] Quit</value></data>
+  <data name="Quitting"          xml:space="preserve"><value>[INFO] Shutting down...</value></data>
+  <data name="BrowserOpening"    xml:space="preserve"><value>[INFO] Opening browser at http://localhost:8765/</value></data>
+
+  <!-- UI strings sent to frontend -->
+  <data name="Player1"           xml:space="preserve"><value>Player 1</value></data>
+  <data name="Player2"           xml:space="preserve"><value>Player 2</value></data>
+  <data name="PhaseReady"        xml:space="preserve"><value>READY</value></data>
+  <data name="PhaseArmed"        xml:space="preserve"><value>BUZZ!</value></data>
+  <data name="PhaseBuzzed"       xml:space="preserve"><value>BUZZED</value></data>
+  <data name="PhaseCorrect"      xml:space="preserve"><value>CORRECT</value></data>
+  <data name="PhaseWrong"        xml:space="preserve"><value>WRONG</value></data>
+  <data name="BtnArm"            xml:space="preserve"><value>UNLOCK BUZZERS</value></data>
+  <data name="BtnCorrect"        xml:space="preserve"><value>Correct</value></data>
+  <data name="BtnWrong"          xml:space="preserve"><value>Wrong</value></data>
+  <data name="BtnReset"          xml:space="preserve"><value>New Question</value></data>
+  <data name="BtnResetScores"    xml:space="preserve"><value>Reset Scores</value></data>
+  <data name="ToastBuzzed"       xml:space="preserve"><value>{0} buzzed first!</value></data>
+  <data name="ConfirmReset"      xml:space="preserve"><value>Really reset scores?</value></data>
+  <data name="ConnConnecting"    xml:space="preserve"><value>Connecting...</value></data>
+  <data name="ConnConnected"     xml:space="preserve"><value>Connected</value></data>
+  <data name="ConnReconnecting"  xml:space="preserve"><value>Disconnected - reconnecting...</value></data>
+  <data name="ToastConnected"    xml:space="preserve"><value>Server connected ✓</value></data>
+  <data name="LangToggle"        xml:space="preserve"><value>DE</value></data>
+</root>
