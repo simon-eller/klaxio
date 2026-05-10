@@ -61,13 +61,13 @@ As the host, you manage the game flow. You can use the buttons on the web interf
   * **.NET 10**
 * **Frontend:**
   * **[Bootstrap 5](https://getbootstrap.com/)** by The Bootstrap Authors
-    Licenced under [MIT-Lizenz](https://github.com/twbs/bootstrap/blob/main/LICENSE).
+    Licenced under [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE).
   * **HTML**
   * **CSS**
   * **JavaScript**
 * **Bluetooth Handling:**
   * **[EchoButtons](https://github.com/zaront/EchoButtons)** by Zaron Thompson
-    Licenced under [MIT-Lizenz](https://github.com/zaront/EchoButtons/blob/master/LICENSE).
+    Licenced under [MIT License](https://github.com/zaront/EchoButtons/blob/master/LICENSE).
 
 ## Build self-contained EXE
 If you want to, you could also run or compile from source by yourself.
