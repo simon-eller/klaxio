@@ -10,17 +10,6 @@
     <link rel="icon" href="/img/favicon.svg">
 
     <style>
-        /* Background image */
-        body::before {
-            content: "";
-            position: fixed; inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
-
         .player-panel { transition: all .4s cubic-bezier(.16,1,.3,1); overflow: hidden; background: var(--bs-body-secondary-bg); }
         .player-panel.winner { background: rgba(var(--bs-primary-rgb), .2) !important; border-color: var(--bs-primary) !important; }
         .player-panel.correct{ background: rgba(var(--bs-success-rgb), .2) !important; border-color: var(--bs-success) !important; }

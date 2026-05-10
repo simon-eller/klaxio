@@ -5,6 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter</value></resheader>
 
+  <!-- Console / Server strings -->
   <data name="AppTitle"          xml:space="preserve"><value>KLAXIO</value></data>
   <data name="BtSearching"       xml:space="preserve"><value>[BT] Suche nach Echo-Buttons...</value></data>
   <data name="BtFound"           xml:space="preserve"><value>[BT] Button gefunden: {0}</value></data>
@@ -24,6 +25,7 @@
   <data name="Quitting"          xml:space="preserve"><value>[INFO] Beende...</value></data>
   <data name="BrowserOpening"    xml:space="preserve"><value>[INFO] Öffne Browser auf http://localhost:8765/</value></data>
 
+  <!-- UI strings sent to frontend -->
   <data name="Player1"           xml:space="preserve"><value>Spieler*in 1</value></data>
   <data name="Player2"           xml:space="preserve"><value>Spieler*in 2</value></data>
   <data name="PhaseReady"        xml:space="preserve"><value>BEREIT</value></data>
