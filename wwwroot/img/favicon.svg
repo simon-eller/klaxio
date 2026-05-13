@@ -3,13 +3,13 @@
    height="24px"
    viewBox="0 -960 960 960"
    width="24px"
-   fill="#000"
+   fill="#1e304e"
    version="1.1"
    id="svg1"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <style>
-    path { fill: #000; }
+    path { fill: #1e304e; }
     @media (prefers-color-scheme: dark) { path { fill: #fff; } }
   </style>
   <defs

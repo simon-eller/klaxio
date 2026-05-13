@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,58 +7,18 @@
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/material-symbols-rounded.css" rel="stylesheet">
+    <link href="/css/capriola.css" rel="stylesheet">
+    <link href="/css/inter.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
     <link rel="icon" href="/img/favicon.svg">
-
-    <style>
-        .player-panel { transition: all .4s cubic-bezier(.16,1,.3,1); overflow: hidden; background: var(--bs-body-secondary-bg); }
-        .player-panel.winner { background: rgba(var(--bs-primary-rgb), .2) !important; border-color: var(--bs-primary) !important; }
-        .player-panel.correct{ background: rgba(var(--bs-success-rgb), .2) !important; border-color: var(--bs-success) !important; }
-        .player-panel.wrong  { background: rgba(var(--bs-danger-rgb),  .2) !important; border-color: var(--bs-danger)  !important; }
-        .player-panel.loser  { opacity: .28; filter: grayscale(.6); }
-
-        /* Score bump animation */
-        .score-badge.bump { animation: bump .4s cubic-bezier(.36,.07,.19,.97); }
-        @keyframes bump {
-            0%  { transform: scale(1); }
-            40% { transform: scale(1.35); color: #22d97a; }
-            100%{ transform: scale(1); }
-        }
-
-        /* Vertical text */
-        #phase-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            letter-spacing: .15em;
-            transition: color .3s;
-            user-select: none;
-        }
-
-        #phase-label.armed  { color: var(--bs-warning) !important; }
-        #phase-label.buzzed { color: var(--bs-primary) !important; }
-        #phase-label.correct{ color: var(--bs-success) !important; }
-        #phase-label.wrong  { color: var(--bs-danger)  !important; }
-
-        /* Simple fade in toast */
-        #toast {
-            position: fixed; bottom: 80px; left: 50%;
-            transform: translateX(-50%) translateY(16px);
-            opacity: 0; pointer-events: none;
-            transition: all .3s; z-index: 1055; white-space: nowrap;
-        }
-        #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-        /* 7. Connection dot glow when online */
-        #conn-dot.ok { box-shadow: 0 0 6px var(--bs-success); }
-    </style>
 </head>
 
 <body class="bg-body text-body overflow-hidden" style="min-height:100vh">
 
-    <nav class="navbar navbar-expand-lg border-secondary-subtle bg-body-tertiary px-4 py-2">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-4 py-2">
     	<div class="container-fluid">
     		<a class="navbar-brand d-flex align-items-center" href="#">
-                <div class="bg-primary rounded-3 p-1 d-inline-flex align-items-center justify-content-center me-2" style="width:30px; height:30px">
+                <div class="bg-black rounded-3 p-1 d-inline-flex align-items-center justify-content-center me-2" style="width:30px; height:30px">
                     <svg
                         class="text-white"
                         height="24px"
@@ -94,7 +54,7 @@
                                 <span class="material-symbols-rounded align-middle fs-5">globe</span>
                                 <span id="lang-label">EN</span>
                             </a>
-    						<ul class="dropdown-menu show" data-bs-popper="static">
+    						<ul class="dropdown-menu" data-bs-popper="static">
        							<li><a class="dropdown-item" href="#" onclick="setLang('en'); return false;">English</a></li>
        							<li><a class="dropdown-item" href="#" onclick="setLang('de'); return false;">Deutsch</a></li>
     						</ul>
@@ -116,7 +76,7 @@
             <div class="player-panel card border flex-grow-1 rounded-4" id="panel-0">
                 <div class="rounded-4"></div>
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
-                    <div class="fw-bold fs-2 text-center" id="name-0">Player 1</div>
+                    <h2 class="fw-bold fs-2 text-center" id="name-0">Player 1</h2>
                     <div class="display-1 fw-bold score-badge" id="score-0">0</div>
                     <div class="fs-1 text-center" id="icon-0"></div>
                 </div>
@@ -124,16 +84,16 @@
 
             <!-- Centre column -->
             <div class="d-flex flex-column align-items-center justify-content-center" style="width:80px; flex-shrink:0">
-                <div class="flex-grow-1 border-start border-secondary-subtle"></div>
+                <div class="flex-grow-1 border-start"></div>
                 <div id="phase-label" class="text-secondary small fw-semibold my-2">READY</div>
-                <div class="flex-grow-1 border-start border-secondary-subtle"></div>
+                <div class="flex-grow-1 border-start"></div>
             </div>
 
             <!-- Player 2 -->
             <div class="player-panel card border flex-grow-1 rounded-4 position-relative" id="panel-1">
                 <div class="rounded-4"></div>
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
-                    <div class="fw-bold fs-2 text-center" id="name-1">Player 2</div>
+                    <h2 class="fw-bold fs-2 text-center" id="name-1">Player 2</h2>
                     <div class="display-1 fw-bold score-badge" id="score-1">0</div>
                     <div class="fs-1 text-center" id="icon-1"></div>
                 </div>
@@ -142,7 +102,7 @@
         </div>
     </main>
 
-    <footer class="border-top border-secondary-subtle bg-body-tertiary py-4 px-4 fixed-bottom">
+    <footer class="bg-body-tertiary py-4 px-4 fixed-bottom">
         <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap">
             <button id="btn-arm" class="btn btn-warning fw-semibold icon-link" onclick="send('arm')">
                 <span class="material-symbols-rounded">play_arrow</span>
@@ -171,7 +131,7 @@
         </div>
     </footer>
 
-    <div id="toast" class="badge text-bg-secondary rounded-pill px-4 py-2 fs-6 fw-normal"></div>
+    <div id="toast" class="badge bg-black rounded-pill px-4 py-2 fs-6 fw-normal"></div>
 
     <script>
       // i18n
