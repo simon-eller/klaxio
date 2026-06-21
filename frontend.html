@@ -15,12 +15,12 @@
 
 <body class="bg-body text-body overflow-hidden" style="min-height:100vh">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary px-4 py-2">
+    <nav class="navbar navbar-expand-lg bg-body-secondary px-4 py-2">
     	<div class="container-fluid">
     		<a class="navbar-brand d-flex align-items-center" href="#">
-                <div class="bg-black rounded-3 p-1 d-inline-flex align-items-center justify-content-center me-2" style="width:30px; height:30px">
+                <div class="bg-success rounded-1 p-1 d-inline-flex align-items-center justify-content-center me-2" style="width:30px; height:30px">
                     <svg
-                        class="text-white"
+                        class="text-dark"
                         height="24px"
                         viewBox="0 -960 960 960"
                         width="24px"
@@ -38,7 +38,7 @@
                     </svg>
                 </div>
 
-    			<span class="fs-3 fw-bold text-primary">KLAX</span>
+    			<span class="fs-3 fw-bold text-success">KLAX</span>
     			<span class="fs-3 fw-bold">IO</span>
     		</a>
 
@@ -69,11 +69,11 @@
     	</div>
     </nav>
 
-    <main class="p-3" style="height:calc(100vh - 155px)">
+    <main class="p-3" style="height:calc(100vh - 173px)">
         <div class="d-flex gap-3 h-100">
 
             <!-- Player 1 -->
-            <div class="player-panel card border flex-grow-1 rounded-4" id="panel-0">
+            <div class="player-panel card bg-dark border flex-grow-1 rounded-4" id="panel-0">
                 <div class="rounded-4"></div>
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
                     <h2 class="fw-bold fs-2 text-center" id="name-0">Player 1</h2>
@@ -90,7 +90,7 @@
             </div>
 
             <!-- Player 2 -->
-            <div class="player-panel card border flex-grow-1 rounded-4 position-relative" id="panel-1">
+            <div class="player-panel card bg-dark border flex-grow-1 rounded-4 position-relative" id="panel-1">
                 <div class="rounded-4"></div>
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
                     <h2 class="fw-bold fs-2 text-center" id="name-1">Player 2</h2>
@@ -102,7 +102,7 @@
         </div>
     </main>
 
-    <footer class="bg-body-tertiary py-4 px-4 fixed-bottom">
+    <footer class="bg-body-secondary py-4 px-4 fixed-bottom">
         <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap">
             <button id="btn-arm" class="btn btn-warning fw-semibold icon-link" onclick="send('arm')">
                 <span class="material-symbols-rounded">play_arrow</span>
@@ -119,12 +119,12 @@
                 Wrong
             </button>
 
-            <button id="btn-reset" class="btn btn-secondary fw-semibold icon-link" onclick="send('reset')" disabled>
+            <button id="btn-reset" class="btn btn-primary border text-white fw-semibold icon-link" onclick="send('reset')" disabled>
                 <span class="material-symbols-rounded">refresh</span>
                 New Question
             </button>
 
-            <button id="btn-scores" class="btn btn-outline-secondary fw-semibold icon-link" onclick="resetScores()">
+            <button id="btn-scores" class="btn btn-primary border fw-semibold icon-link" onclick="resetScores()">
                 <span class="material-symbols-rounded">restart_alt</span>
                 Reset Scores
             </button>
