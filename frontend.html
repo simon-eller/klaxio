@@ -3,78 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KLAXIO</title>
+    <title>Klaxio</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/material-symbols-rounded.css" rel="stylesheet">
-    <link href="/css/capriola.css" rel="stylesheet">
-    <link href="/css/inter.css" rel="stylesheet">
+    <link href="/css/material-symbols.css" rel="stylesheet">
+    <link href="/css/dm-sans.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
-    <link rel="icon" href="/img/favicon.svg">
+    <link rel="icon" href="/img/app-logo.svg">
 </head>
 
-<body class="bg-body text-body overflow-hidden" style="min-height:100vh">
+<body class="overflow-hidden" style="min-height:100vh">
 
-    <nav class="navbar navbar-expand-lg bg-body-secondary px-4 py-2">
-    	<div class="container-fluid">
-    		<a class="navbar-brand d-flex align-items-center" href="#">
-                <div class="bg-success rounded-1 p-1 d-inline-flex align-items-center justify-content-center me-2" style="width:30px; height:30px">
-                    <svg
-                        class="text-dark"
-                        height="24px"
-                        viewBox="0 -960 960 960"
-                        width="24px"
-                        fill="#000"
-                        version="1.1"
-                        id="svg1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:svg="http://www.w3.org/2000/svg">
-                        <defs
-                        id="defs1" />
-                        <path
-                        id="path5"
-                        style="fill:currentColor;stroke-width:3423.91;stroke-linecap:round;stroke-linejoin:round"
-                        d="M 120 -848.4375 C 98 -848.4375 79.182292 -840.58854 63.515625 -824.92188 C 47.848958 -809.25521 40 -790.4375 40 -768.4375 L 40 -628.4375 L 40 -488.4375 C 40 -466.4375 47.848958 -447.54167 63.515625 -431.875 C 79.182292 -416.20833 98 -408.4375 120 -408.4375 C 142 -408.4375 160.81771 -416.20833 176.48438 -431.875 C 192.15104 -447.54167 200 -466.4375 200 -488.4375 L 200 -768.4375 C 200 -790.4375 192.15104 -809.25521 176.48438 -824.92188 C 160.8177 -840.58854 142 -848.4375 120 -848.4375 z M 559.53125 -844.92188 C 551.19792 -845.25521 543 -844.07292 535 -841.40625 L 338.98438 -786.40625 C 321.65105 -781.07292 307.48437 -771.42188 296.48438 -757.42188 C 285.48438 -743.42188 280 -727.375 280 -709.375 L 280 -589.375 L 280 -472.42188 C 280 -454.42188 286.18229 -439.20833 298.51562 -426.875 C 310.84895 -414.54167 325.98438 -408.4375 343.98438 -408.4375 L 345 -408.4375 C 350.33333 -408.4375 355.19792 -408.92188 359.53125 -409.92188 C 363.86458 -410.92188 368.30208 -412.10417 372.96875 -413.4375 L 641.01562 -513.4375 C 652.34895 -518.10417 661.65105 -525.60417 668.98438 -535.9375 C 676.31771 -546.27083 680 -557.72396 680 -570.39062 C 680 -581.05729 676.3177 -590.08854 668.98438 -597.42188 C 661.65104 -604.75521 652.69792 -608.4375 642.03125 -608.4375 L 520 -608.4375 L 467.96875 -588.4375 C 462.63542 -586.4375 457.63542 -586.4375 452.96875 -588.4375 C 448.30208 -590.4375 444.96875 -594.04167 442.96875 -599.375 C 440.96875 -604.70833 441.1823 -609.92188 443.51562 -614.92188 C 445.84896 -619.92188 449.66667 -623.39062 455 -625.39062 L 520 -648.4375 L 800 -648.4375 C 821.33333 -648.4375 840.01562 -656.07292 856.01562 -671.40625 C 872.01562 -686.73958 880 -705.77083 880 -728.4375 L 583.98438 -839.375 C 575.98438 -842.70833 567.86458 -844.58855 559.53125 -844.92188 z M 660 -328.4375 C 538.49734 -328.4375 439.99998 -304.7672 440 -275.625 L 440 -270.3125 C 430.72654 -268.20727 422.52238 -263.45988 415.3125 -256.25 C 405.12917 -246.06667 400 -233.83125 400 -219.53125 L 400 -163.59375 C 400 -149.29375 405.12917 -137.05834 415.3125 -126.875 C 425.49584 -116.69167 437.73125 -111.5625 452.03125 -111.5625 L 867.96875 -111.5625 C 882.26875 -111.5625 894.5041 -116.69167 904.6875 -126.875 C 914.8708 -137.05834 920 -149.29375 920 -163.59375 L 920 -219.53125 C 920 -233.83125 914.8708 -246.06667 904.6875 -256.25 C 897.47758 -263.45987 889.27343 -268.20726 880 -270.3125 L 880 -275.625 C 880.00002 -304.7672 781.50266 -328.4375 660 -328.4375 z " />
-                    </svg>
-                </div>
+    <a id="skip-link" class="visually-hidden-focusable skip-link" href="#main-content">Jump to content</a>
 
-    			<span class="fs-3 fw-bold text-success">KLAX</span>
-    			<span class="fs-3 fw-bold">IO</span>
-    		</a>
+    <button class="btn drawer-toggle drawer-toggle-open" id="drawer-open"
+            type="button" data-drawer-toggle
+            aria-controls="drawer-nav" aria-expanded="true"
+            aria-label="Open menu" title="Open menu">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+    </button>
 
-    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Navigation ausklappen">
-    			  <span class="navbar-toggler-icon"></span>
-    		</button>
+    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true" hidden>
+    </div>
 
-    		<div class="collapse navbar-collapse" id="navbarContent">
-    			<div class="pt-3 pt-lg-0 ms-auto d-flex align-items-center">
-    				<ul class="navbar-nav">
-    					<li class="nav-item dropdown">
-       						<a class="nav-link dropdown-toggle icon-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="material-symbols-rounded align-middle fs-5">globe</span>
-                                <span id="lang-label">EN</span>
-                            </a>
-    						<ul class="dropdown-menu" data-bs-popper="static">
-       							<li><a class="dropdown-item" href="#" onclick="setLang('en'); return false;">English</a></li>
-       							<li><a class="dropdown-item" href="#" onclick="setLang('de'); return false;">Deutsch</a></li>
-    						</ul>
-    					</li>
-    				</ul>
+    <aside class="drawer drawer-left show" id="drawer-nav">
+        <header class="drawer-header py-1 px-2">
+            <div class="drawer-header-content">
+                <img src="/img/app-logo.svg" alt="App Icon" class="drawer-logo">
+                <span class="drawer-brand">Klaxio</span>
+            </div>
 
-                    <span id="conn-dot" class="badge rounded-circle p-1 ms-2 bg-danger" style="height: 1px; width: 1px;">&nbsp;</span>
-                    <span id="conn-text" class="ms-2">Connecting...</span>
-    			</div>
+            <button id="drawer-close" class="btn drawer-toggle ms-auto" type="button" data-drawer-toggle data-drawer-dismiss
+                    aria-controls="drawer-nav" aria-expanded="true"
+                    aria-label="Close menu" title="Close menu">
+                <span class="material-symbols-outlined" aria-hidden="true">close</span>
+            </button>
+        </header>
 
-    		</div>
-    	</div>
-    </nav>
+        <div class="drawer-content">
+            <p class="drawer-nav-item drawer-nav-item-static mb-0" role="status">
+                <span class="drawer-nav-icon" aria-hidden="true">
+                    <span id="conn-dot" class="conn-dot bg-danger"></span>
+                </span>
+                <span id="conn-text" class="drawer-nav-label text-truncate">Connecting …</span>
+            </p>
 
-    <main class="p-3" style="height:calc(100vh - 173px)">
+            <nav class="drawer-nav" aria-label="Main navigation">
+                <ul class="list-unstyled mb-0">
+
+                    <li class="drawer-nav-group">
+                        <h2 class="drawer-nav-heading">
+                            <button class="drawer-nav-item drawer-nav-toggle" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#nav-app"
+                                    aria-expanded="true" aria-controls="nav-app">
+                                <span class="drawer-nav-chevron" aria-hidden="true">
+                                    <span class="collapsed-icon material-symbols-outlined">chevron_right</span>
+                                    <span class="expanded-icon material-symbols-outlined">expand_more</span>
+                                </span>
+                                <span id="nav-app-group-text" class="drawer-nav-label text-truncate">App</span>
+                            </button>
+                        </h2>
+
+                        <div class="collapse show" id="nav-app">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a class="drawer-nav-item drawer-nav-sub" href="/app" aria-current="page">
+                                        <span class="drawer-nav-icon" aria-hidden="true">
+                                            <span class="material-symbols-outlined">home_app_logo</span>
+                                        </span>
+                                        <span id="nav-app-sub-text" class="drawer-nav-label text-truncate">App</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="drawer-nav-group">
+                        <h2 class="drawer-nav-heading">
+                            <button class="drawer-nav-item drawer-nav-toggle" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#nav-settings"
+                                    aria-expanded="true" aria-controls="nav-settings">
+                                <span class="drawer-nav-chevron" aria-hidden="true">
+                                    <span class="collapsed-icon material-symbols-outlined">chevron_right</span>
+                                    <span class="expanded-icon material-symbols-outlined">expand_more</span>
+                                </span>
+                                <span id="nav-settings-group-text" class="drawer-nav-label text-truncate">Settings</span>
+                            </button>
+                        </h2>
+
+                        <div class="collapse show" id="nav-settings">
+                            <ul class="list-unstyled mb-0">
+                                <li class="dropdown">
+                                    <button class="drawer-nav-item drawer-nav-sub dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" data-bs-display="static"
+                                            aria-expanded="false">
+                                        <span class="drawer-nav-icon" aria-hidden="true">
+                                            <span class="material-symbols-outlined">language</span>
+                                        </span>
+                                        <span class="drawer-nav-label text-truncate">
+                                            <span id="nav-language-text">Language: </span><span id="lang-label">EN</span>
+                                        </span>
+                                    </button>
+                                    <ul id="lang-dropdown" class="dropdown-menu" aria-label="Choose language">
+                                        <li>
+                                            <button class="dropdown-item" type="button" data-lang="en" aria-current="true">English</button>
+                                        </li>
+                                        <li>
+                                            <button class="dropdown-item" type="button" data-lang="de">Deutsch</button>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="drawer-footer text-center">
+            <img src="img/simon-eller-logo.svg" alt="Simon Eller Logo" style="height: 2rem;"/>
+        </div>
+    </aside>
+
+    <main id="main-content" tabindex="-1" class="p-4" style="height:90vh">
         <div class="d-flex gap-3 h-100">
 
             <!-- Player 1 -->
-            <div class="player-panel card bg-dark border flex-grow-1 rounded-4" id="panel-0">
-                <div class="rounded-4"></div>
+            <div class="player-panel card text-bg-light border flex-grow-1 rounded-4" id="panel-0">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
                     <h2 class="fw-bold fs-2 text-center" id="name-0">Player 1</h2>
                     <div class="display-1 fw-bold score-badge" id="score-0">0</div>
@@ -85,12 +141,12 @@
             <!-- Centre column -->
             <div class="d-flex flex-column align-items-center justify-content-center" style="width:80px; flex-shrink:0">
                 <div class="flex-grow-1 border-start"></div>
-                <div id="phase-label" class="text-secondary small fw-semibold my-2">READY</div>
+                <div id="phase-label" class="text-dark small fw-semibold my-2">READY</div>
                 <div class="flex-grow-1 border-start"></div>
             </div>
 
             <!-- Player 2 -->
-            <div class="player-panel card bg-dark border flex-grow-1 rounded-4 position-relative" id="panel-1">
+            <div class="player-panel card text-bg-light border flex-grow-1 rounded-4 position-relative" id="panel-1">
                 <div class="rounded-4"></div>
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
                     <h2 class="fw-bold fs-2 text-center" id="name-1">Player 2</h2>
@@ -102,30 +158,30 @@
         </div>
     </main>
 
-    <footer class="bg-body-secondary py-4 px-4 fixed-bottom">
+    <footer class="bg-light p-4 fixed-bottom">
         <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap">
-            <button id="btn-arm" class="btn btn-warning fw-semibold icon-link" onclick="send('arm')">
-                <span class="material-symbols-rounded">play_arrow</span>
+            <button id="btn-arm" class="btn btn-primary fw-semibold icon-link" onclick="send('arm')">
+                <span class="material-symbols-outlined">play_arrow</span>
                 UNLOCK BUZZERS
             </button>
 
             <button id="btn-correct" class="btn btn-success fw-semibold icon-link" onclick="send('correct')" disabled>
-                <span class="material-symbols-rounded">thumb_up</span>
+                <span class="material-symbols-outlined">thumb_up</span>
                 Correct
             </button>
 
             <button id="btn-wrong" class="btn btn-danger fw-semibold icon-link" onclick="send('wrong')" disabled>
-                <span class="material-symbols-rounded">thumb_down</span>
+                <span class="material-symbols-outlined">thumb_down</span>
                 Wrong
             </button>
 
-            <button id="btn-reset" class="btn btn-primary border text-white fw-semibold icon-link" onclick="send('reset')" disabled>
-                <span class="material-symbols-rounded">refresh</span>
+            <button id="btn-reset" class="btn btn-warning fw-semibold icon-link" onclick="send('reset')" disabled>
+                <span class="material-symbols-outlined">refresh</span>
                 New Question
             </button>
 
-            <button id="btn-scores" class="btn btn-primary border fw-semibold icon-link" onclick="resetScores()">
-                <span class="material-symbols-rounded">restart_alt</span>
+            <button id="btn-scores" class="btn btn-warning fw-semibold icon-link" onclick="resetScores()">
+                <span class="material-symbols-outlined">restart_alt</span>
                 Reset Scores
             </button>
         </div>
@@ -140,19 +196,50 @@
 
       function applyStrings(strings) {
           S = strings;
-          document.getElementById("btn-arm").innerHTML = `<span class="material-symbols-rounded">play_arrow</span> ${S.btnArm ?? "UNLOCK BUZZERS"}`;
-          document.getElementById("btn-correct").innerHTML = `<span class="material-symbols-rounded">thumb_up</span> ${S.btnCorrect ?? "Correct"}`;
-          document.getElementById("btn-wrong").innerHTML = `<span class="material-symbols-rounded">thumb_down</span> ${S.btnWrong ?? "Wrong"}`;
-          document.getElementById("btn-reset").innerHTML = `<span class="material-symbols-rounded">refresh</span> ${S.btnReset ?? "New Question"}`;
-          document.getElementById("btn-scores").innerHTML = `<span class="material-symbols-rounded">restart_alt</span> ${S.btnResetScores ?? "Reset Scores"}`;
+          document.getElementById("btn-arm").innerHTML = `<span class="material-symbols-outlined">play_arrow</span> ${S.btnArm ?? "UNLOCK BUZZERS"}`;
+          document.getElementById("btn-correct").innerHTML = `<span class="material-symbols-outlined">thumb_up</span> ${S.btnCorrect ?? "Correct"}`;
+          document.getElementById("btn-wrong").innerHTML = `<span class="material-symbols-outlined">thumb_down</span> ${S.btnWrong ?? "Wrong"}`;
+          document.getElementById("btn-reset").innerHTML = `<span class="material-symbols-outlined">refresh</span> ${S.btnReset ?? "New Question"}`;
+          document.getElementById("btn-scores").innerHTML = `<span class="material-symbols-outlined">restart_alt</span> ${S.btnResetScores ?? "Reset Scores"}`;
           document.getElementById("conn-text").textContent = connected
           ? (S.connConnected ?? "Connected") : (S.connConnecting ?? "Connecting...");
+
+          // --- Frontend UI strings ---
+          document.getElementById("skip-link").textContent = S.jumpToContent ?? "Jump to content";
+
+          const btnOpen = document.getElementById("drawer-open");
+          if (btnOpen) {
+              btnOpen.setAttribute("aria-label", S.openMenu ?? "Open menu");
+              btnOpen.setAttribute("title", S.openMenu ?? "Open menu");
+          }
+
+          const btnClose = document.getElementById("drawer-close");
+          if (btnClose) {
+              btnClose.setAttribute("aria-label", S.closeMenu ?? "Close menu");
+              btnClose.setAttribute("title", S.closeMenu ?? "Close menu");
+          }
+
+          document.getElementById("nav-app-group-text").textContent = S.navApp ?? "App";
+          document.getElementById("nav-app-sub-text").textContent = S.navApp ?? "App";
+          document.getElementById("nav-settings-group-text").textContent = S.navSettings ?? "Settings";
+          document.getElementById("nav-language-text").textContent = (S.navLanguage ?? "Language") + ": ";
+          document.getElementById("lang-dropdown").setAttribute("aria-label", S.chooseLanguage ?? "Choose language");
+
           applyPhaseLabel(currentPhase);
       }
 
       function setLang(lang) {
           currentLang = lang;
           document.getElementById("lang-label").textContent = lang === "de" ? "DE" : "EN";
+
+          document.querySelectorAll("[data-lang]").forEach(function (el) {
+              if (el.dataset.lang === lang) {
+                  el.setAttribute("aria-current", "true");
+              } else {
+                  el.removeAttribute("aria-current");
+              }
+          });
+
           send("lang_" + currentLang);
       }
 
@@ -230,28 +317,53 @@
       }
 
       function applyPhase(phase, winner) {
-          currentPhase = phase; currentWinner = winner;
-          [0, 1].forEach(i => {
-            document.getElementById(`panel-${i}`).classList.remove("winner","loser","correct","wrong");
-            document.getElementById(`icon-${i}`).innerHTML = phaseIcon(phase, i, winner);
-          });
+        currentPhase = phase; currentWinner = winner;
 
-          if (winner !== null) {
-            const stateClass = phase === "buzzed" ? "winner" : phase === "correct" ? "correct" : phase === "wrong" ? "wrong" : "";
-            if (stateClass) document.getElementById(`panel-${winner}`).classList.add(stateClass);
-            document.getElementById(`panel-${1-winner}`).classList.add("loser");
+        [0, 1].forEach(i => {
+          const panel = document.getElementById(`panel-${i}`);
+
+          panel.classList.remove(
+            "bg-light", "bg-info", "bg-success", "bg-danger", "bg-warning",
+            "text-bg-light", "text-bg-info", "text-bg-success", "text-bg-danger", "text-bg-warning", "text-bg-dark", "opacity-25"
+          );
+
+          // Setze den Standard-Hintergrund inkl. korrekter Textfarbe zurück
+          panel.classList.add("text-bg-light");
+
+          document.getElementById(`icon-${i}`).innerHTML = phaseIcon(phase, i, winner);
+        });
+
+        if (winner !== null) {
+          const winnerPanel = document.getElementById(`panel-${winner}`);
+          const loserPanel = document.getElementById(`panel-${1 - winner}`);
+
+          // Standardhintergrund entfernen
+          winnerPanel.classList.remove("text-bg-light");
+          loserPanel.classList.remove("text-bg-light");
+
+          // Winner panel status (nur text-bg-* Klassen um Hintergrund + Textkontrast zu setzen)
+          if (phase === "buzzed") {
+              winnerPanel.classList.add("text-bg-info");
+          } else if (phase === "correct") {
+              winnerPanel.classList.add("text-bg-success");
+          } else if (phase === "wrong") {
+              winnerPanel.classList.add("text-bg-danger");
           }
 
-          applyPhaseLabel(phase);
-          document.getElementById("btn-arm").disabled = phase === "armed" || phase === "buzzed";
-          document.getElementById("btn-correct").disabled = phase !== "buzzed";
-          document.getElementById("btn-wrong").disabled = phase !== "buzzed";
-          document.getElementById("btn-reset").disabled = phase === "waiting" || phase === "armed";
-      }
+          // Loser panel status auf Grau und leicht transparent (ausgegraut)
+          loserPanel.classList.add("text-bg-dark", "opacity-25");
+        }
+
+        applyPhaseLabel(phase);
+        document.getElementById("btn-arm").disabled = phase === "armed" || phase === "buzzed";
+        document.getElementById("btn-correct").disabled = phase !== "buzzed";
+        document.getElementById("btn-wrong").disabled = phase !== "buzzed";
+        document.getElementById("btn-reset").disabled = phase === "waiting" || phase === "armed";
+    }
 
       function applyPhaseLabel(phase) {
           const el = document.getElementById("phase-label");
-          el.className = `text-secondary small fw-semibold my-2 ${phase}`;
+          el.className = `text-dark small fw-semibold my-2 ${phase}`;
           const map = {
             waiting: S.phaseReady   ?? "READY",
             armed:   S.phaseArmed   ?? "BUZZ!",
@@ -263,7 +375,7 @@
       }
 
       function phaseIcon(phase, idx, winner) {
-          const icon = name => `<span class="material-symbols-rounded fs-1">${name}</span>`;
+          const icon = name => `<span class="material-symbols-outlined fs-1">${name}</span>`;
 
           if (phase === "armed") return icon("my_location");
           if (phase === "buzzed"  && idx === winner) return icon("notifications_active");
@@ -292,7 +404,7 @@
 
       // Keyboard shortcuts
       document.addEventListener("keydown", e => {
-          if (e.target.tagName === "INPUT") return;
+          if (e.target.closest("input, textarea, select, button, a, [contenteditable]")) return;
 
           if (e.code === "Space" || e.code === "Enter") {
             e.preventDefault();
@@ -314,6 +426,111 @@
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => el.classList.remove("show"), 2500);
       }
+
+      // Drawer
+      (function () {
+          'use strict';
+
+          var STORAGE_KEY = 'drawer-open-left';
+          var drawer   = document.getElementById('drawer-nav');
+          var backdrop = document.getElementById('drawer-backdrop');
+          var main     = document.getElementById('main-content');
+          var openBtn  = document.getElementById('drawer-open');
+          var wide     = window.matchMedia('(min-width: 768px)');
+
+          if (!drawer) {
+              return;
+          }
+
+          var togglers = document.querySelectorAll('[data-drawer-toggle]');
+
+          function isOpen() {
+              return drawer.classList.contains('show');
+          }
+
+          function setDrawer(open, options) {
+              options = options || {};
+
+              var overlay = open && !wide.matches;
+              var focusWasInside = drawer.contains(document.activeElement);
+
+              drawer.classList.toggle('show', open);
+              document.body.classList.toggle('drawer-open-left', open);
+
+              togglers.forEach(function (btn) {
+                  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+              });
+
+              if (backdrop) {
+                  backdrop.hidden = !overlay;
+              }
+
+              if (main) {
+                  main.inert = overlay;
+              }
+
+              if (options.manageFocus !== false) {
+                  if (overlay) {
+                      var dismiss = drawer.querySelector('[data-drawer-dismiss]');
+                      if (dismiss) {
+                          dismiss.focus();
+                      }
+                  } else if (!open && focusWasInside && openBtn) {
+                      openBtn.focus();
+                  }
+              }
+
+              if (options.remember !== false) {
+                  try {
+                      localStorage.setItem(STORAGE_KEY, open ? '1' : '0');
+                  } catch (e) {}
+              }
+          }
+
+          togglers.forEach(function (btn) {
+              btn.addEventListener('click', function () {
+                  setDrawer(!isOpen());
+              });
+          });
+
+          if (backdrop) {
+              backdrop.addEventListener('click', function () {
+                  setDrawer(false);
+              });
+          }
+
+          document.addEventListener('keydown', function (e) {
+              if (e.key === 'Escape' && isOpen() && !wide.matches) {
+                  setDrawer(false);
+              }
+          });
+
+          wide.addEventListener('change', function () {
+              setDrawer(isOpen(), { remember: false, manageFocus: false });
+          });
+
+          var stored = null;
+          try {
+              stored = localStorage.getItem(STORAGE_KEY);
+          } catch (e) {
+              stored = null;
+          }
+          setDrawer(stored === null ? wide.matches : stored === '1', {
+              remember: false,
+              manageFocus: false
+          });
+          document.body.classList.add('drawers-ready');
+      }());
+
+      (function () {
+          'use strict';
+          document.addEventListener('click', function (e) {
+              var btn = e.target.closest('[data-lang]');
+              if (btn && typeof window.setLang === 'function') {
+                  window.setLang(btn.dataset.lang);
+              }
+          });
+      }());
 
       connect();
     </script>

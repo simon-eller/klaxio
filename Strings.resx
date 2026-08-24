@@ -45,4 +45,11 @@
   <data name="ConnReconnecting"  xml:space="preserve"><value>Disconnected - reconnecting...</value></data>
   <data name="ToastConnected"    xml:space="preserve"><value>Server connected ✓</value></data>
   <data name="LangToggle"        xml:space="preserve"><value>DE</value></data>
+  <data name="JumpToContent"     xml:space="preserve"><value>Jump to content</value></data>
+  <data name="OpenMenu"          xml:space="preserve"><value>Open menu</value></data>
+  <data name="CloseMenu"         xml:space="preserve"><value>Close menu</value></data>
+  <data name="NavApp"            xml:space="preserve"><value>App</value></data>
+  <data name="NavSettings"       xml:space="preserve"><value>Settings</value></data>
+  <data name="NavLanguage"       xml:space="preserve"><value>Language</value></data>
+  <data name="ChooseLanguage"    xml:space="preserve"><value>Choose language</value></data>
 </root>

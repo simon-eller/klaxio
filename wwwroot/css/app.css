@@ -3,23 +3,6 @@
     overflow: hidden;
 }
 
-.player-panel.winner {
-    background: var(--bs-info) !important;
-}
-
-.player-panel.correct {
-    background: var(--bs-success) !important;
-}
-
-.player-panel.wrong {
-    background: var(--bs-danger) !important;
-}
-
-.player-panel.loser {
-    opacity: .28;
-    filter: grayscale(.6);
-}
-
 /* Score bump animation */
 .score-badge.bump {
     animation: bump .4s cubic-bezier(.36,.07,.19,.97);
@@ -42,19 +25,19 @@
 }
 
 #phase-label.armed {
-    color: var(--bs-warning-text-emphasis) !important;
+    color: var(--bs-primary) !important;
 }
 
 #phase-label.buzzed {
-    color: var(--bs-primary-text-emphasis) !important;
+    color: var(--bs-info) !important;
 }
 
 #phase-label.correct {
-    color: var(--bs-success-text-emphasis) !important;
+    color: var(--bs-success) !important;
 }
 
 #phase-label.wrong {
-    color: var(--bs-danger-text-emphasis)  !important;
+    color: var(--bs-danger) !important;
 }
 
 /* Simple fade in toast */
@@ -76,4 +59,12 @@
 
 #conn-dot.ok {
     box-shadow: 0 0 6px var(--bs-success);
+}
+
+.conn-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    line-height: 0;
 }
