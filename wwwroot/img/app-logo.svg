@@ -3,7 +3,7 @@
    height="24px"
    viewBox="0 -960 960 960"
    width="24px"
-   fill="#1f1f1f"
+   fill="#0c0d27"
    version="1.1"
    id="svg1"
    sodipodi:docname="app-logo.svg"
@@ -11,9 +11,12 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">Klaxio Logo</title>
   <sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
@@ -24,20 +27,54 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="15.3125"
-     inkscape:cx="12.571429"
-     inkscape:cy="15.444898"
+     inkscape:cx="18.644898"
+     inkscape:cy="8.9142857"
      inkscape:window-width="1680"
      inkscape:window-height="979"
      inkscape:window-x="1672"
      inkscape:window-y="100"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
+  <style
+     id="style1">
+    path { fill: #0c0d27; }
+    @media (prefers-color-scheme: dark) { path { fill: #f3f1fc; } }
+  </style>
+  <defs
+     id="defs1" />
   <path
-     d="m 390,-120 q -51,0 -88,-35.5 -37,-35.5 -42,-85.5 -60,-8 -100,-53 -40,-45 -40,-106 0,-21 5.5,-41.5 5.5,-20.5 16.5,-38.5 -11,-18 -16.5,-38 -5.5,-20 -5.5,-42 0,-61 40,-105.5 40,-44.5 99,-52.5 3,-51 41,-86.5 38,-35.5 90,-35.5 13,0 25.5,3 12.5,3 24.5,8 v 699 q -12,5 -24.5,7.5 -12.5,2.5 -25.5,2.5 z"
-     id="path2"
-     style="fill:#595736;fill-opacity:1" />
+     id="path5"
+     style="fill:#8d4b0c;fill-opacity:1;stroke-width:3423.91;stroke-linecap:round;stroke-linejoin:round"
+     d="m 640,-312.65625 c -121.50266,0 -220.00002,23.6703 -220,52.8125 v 5.3125 c -9.27346,2.10523 -17.47762,6.85262 -24.6875,14.0625 C 385.12917,-230.28542 380,-218.05 380,-203.75 v 55.9375 c 0,14.3 5.12917,26.53541 15.3125,36.71875 10.18334,10.18333 22.41875,15.3125 36.71875,15.3125 h 415.9375 c 14.3,0 26.53535,-5.12917 36.71875,-15.3125 C 894.8708,-121.27709 900,-133.5125 900,-147.8125 V -203.75 c 0,-14.3 -5.1292,-26.53542 -15.3125,-36.71875 -7.20992,-7.20987 -15.41407,-11.95726 -24.6875,-14.0625 v -5.3125 c 2e-5,-29.1422 -98.49734,-52.8125 -220,-52.8125 z"
+     sodipodi:nodetypes="sscsssssssssscss" />
   <path
-     d="m 570,-120 q -13,0 -25.5,-2.5 Q 532,-125 520,-130 v -700 q 12,-5 24.5,-7.5 12.5,-2.5 25.5,-2.5 52,0 89.5,35 37.5,35 40.5,86 59,8 99.5,53 40.5,45 40.5,106 0,22 -5.5,42 -5.5,20 -16.5,38 11,18 16.5,38.5 5.5,20.5 5.5,41.5 0,62 -40.5,106.5 Q 759,-249 699,-241 q -5,50 -41.5,85.5 Q 621,-120 570,-120 Z"
+     d="m 294,-393.21875 c -29.33333,-3.33333 -55.5,-13.66667 -78.5,-31 -23,-17.33333 -40.16667,-39.66667 -51.5,-67 l -104,-253 240,-120 80,120 h 208 c 10.66667,0 21,2.16667 31,6.5 10,4.33333 18.66667,10.16667 26,17.5 l 255,256 -51,36 c -13.33333,9.33333 -28.33333,13.83333 -45,13.5 -16.66667,-0.33333 -32.33333,-4.5 -47,-12.5 l -267,-149 -110,-8 -4,60 96,7 87,50 c 12.66667,6.66667 20.5,15.83333 23.5,27.5 3,11.66667 2.5,23.16667 -1.5,34.5 -4,11.33333 -11.5,20.66667 -22.5,28 -11,7.33333 -24.5,10.33333 -40.5,9 z"
      id="path1"
-     style="fill:#8d4b0c;fill-opacity:1" />
+     sodipodi:nodetypes="csccccsscccsccccccssscc"
+     style="fill:#595736;fill-opacity:1" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Klaxio Logo</dc:title>
+        <dc:date>25.08.2026</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Simon Eller</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Simon Eller</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Simon Eller</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
 </svg>
