@@ -12,30 +12,33 @@
     <link rel="icon" href="/img/app-logo.svg">
 </head>
 
-<body class="overflow-hidden" style="min-height:100vh">
+<body>
 
-    <a id="skip-link" class="visually-hidden-focusable skip-link" href="#main-content">Jump to content</a>
+    <a id="skip-link" class="visually-hidden-focusable skip-link" href="#main-content" data-i18n="jumpToContent">Jump to content</a>
 
     <button class="btn drawer-toggle drawer-toggle-open" id="drawer-open"
             type="button" data-drawer-toggle
             aria-controls="drawer-nav" aria-expanded="true"
-            aria-label="Open menu" title="Open menu">
+            aria-label="Open menu" title="Open menu"
+            data-i18n-aria-label="openMenu" data-i18n-title="openMenu">
         <span class="material-symbols-outlined" aria-hidden="true">menu</span>
     </button>
 
-    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true" hidden>
-    </div>
+    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true" hidden></div>
 
+    <!-- Drawer -->
     <aside class="drawer drawer-left show" id="drawer-nav">
         <header class="drawer-header py-1 px-2">
             <div class="drawer-header-content">
                 <img src="/img/app-logo.svg" alt="App Icon" class="drawer-logo">
-                <span class="drawer-brand">Klaxio</span>
+                <span class="drawer-brand" data-i18n="appName">Klaxio</span>
             </div>
 
-            <button id="drawer-close" class="btn drawer-toggle ms-auto" type="button" data-drawer-toggle data-drawer-dismiss
+            <button id="drawer-close" class="btn drawer-toggle ms-auto" type="button"
+                    data-drawer-toggle data-drawer-dismiss
                     aria-controls="drawer-nav" aria-expanded="true"
-                    aria-label="Close menu" title="Close menu">
+                    aria-label="Close menu" title="Close menu"
+                    data-i18n-aria-label="closeMenu" data-i18n-title="closeMenu">
                 <span class="material-symbols-outlined" aria-hidden="true">close</span>
             </button>
         </header>
@@ -45,39 +48,49 @@
                 <span class="drawer-nav-icon" aria-hidden="true">
                     <span id="conn-dot" class="conn-dot bg-danger"></span>
                 </span>
-                <span id="conn-text" class="drawer-nav-label text-truncate">Connecting …</span>
+                <span id="conn-text" class="drawer-nav-label text-truncate">Connecting...</span>
             </p>
 
             <nav class="drawer-nav" aria-label="Main navigation">
                 <ul class="list-unstyled mb-0">
 
+                    <!-- Games -->
                     <li class="drawer-nav-group">
                         <h2 class="drawer-nav-heading">
                             <button class="drawer-nav-item drawer-nav-toggle" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#nav-app"
-                                    aria-expanded="true" aria-controls="nav-app">
+                                    data-bs-toggle="collapse" data-bs-target="#nav-games"
+                                    aria-expanded="true" aria-controls="nav-games">
                                 <span class="drawer-nav-chevron" aria-hidden="true">
                                     <span class="collapsed-icon material-symbols-outlined">chevron_right</span>
                                     <span class="expanded-icon material-symbols-outlined">expand_more</span>
                                 </span>
-                                <span id="nav-app-group-text" class="drawer-nav-label text-truncate">App</span>
+                                <span class="drawer-nav-label text-truncate" data-i18n="navGames">Games</span>
                             </button>
                         </h2>
 
-                        <div class="collapse show" id="nav-app">
+                        <div class="collapse show" id="nav-games">
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a class="drawer-nav-item drawer-nav-sub" href="/app" aria-current="page">
+                                    <button class="drawer-nav-item drawer-nav-sub" type="button" data-nav="screen-quiz">
                                         <span class="drawer-nav-icon" aria-hidden="true">
-                                            <span class="material-symbols-outlined">home_app_logo</span>
+                                            <span class="material-symbols-outlined">neurology</span>
                                         </span>
-                                        <span id="nav-app-sub-text" class="drawer-nav-label text-truncate">App</span>
-                                    </a>
+                                        <span class="drawer-nav-label text-truncate" data-i18n="navQuiz">Classic Quiz</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="drawer-nav-item drawer-nav-sub" type="button" data-nav="screen-music">
+                                        <span class="drawer-nav-icon" aria-hidden="true">
+                                            <span class="material-symbols-outlined">music_note</span>
+                                        </span>
+                                        <span class="drawer-nav-label text-truncate" data-i18n="navMusic">Playlist</span>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
                     </li>
 
+                    <!-- Settings -->
                     <li class="drawer-nav-group">
                         <h2 class="drawer-nav-heading">
                             <button class="drawer-nav-item drawer-nav-toggle" type="button"
@@ -87,7 +100,7 @@
                                     <span class="collapsed-icon material-symbols-outlined">chevron_right</span>
                                     <span class="expanded-icon material-symbols-outlined">expand_more</span>
                                 </span>
-                                <span id="nav-settings-group-text" class="drawer-nav-label text-truncate">Settings</span>
+                                <span class="drawer-nav-label text-truncate" data-i18n="navSettings">Settings</span>
                             </button>
                         </h2>
 
@@ -101,17 +114,31 @@
                                             <span class="material-symbols-outlined">language</span>
                                         </span>
                                         <span class="drawer-nav-label text-truncate">
-                                            <span id="nav-language-text">Language: </span><span id="lang-label">EN</span>
+                                            <span data-i18n="navLanguage">Language</span>:
+                                            <span id="lang-label">EN</span>
                                         </span>
                                     </button>
-                                    <ul id="lang-dropdown" class="dropdown-menu" aria-label="Choose language">
-                                        <li>
-                                            <button class="dropdown-item" type="button" data-lang="en" aria-current="true">English</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item" type="button" data-lang="de">Deutsch</button>
-                                        </li>
+                                    <ul id="lang-dropdown" class="dropdown-menu" aria-label="Choose language"
+                                        data-i18n-aria-label="chooseLanguage">
+                                        <li><button class="dropdown-item" type="button" data-lang="en" aria-current="true">English</button></li>
+                                        <li><button class="dropdown-item" type="button" data-lang="de">Deutsch</button></li>
                                     </ul>
+                                </li>
+                                <li>
+                                    <button class="drawer-nav-item drawer-nav-sub" type="button" data-nav="screen-register">
+                                        <span class="drawer-nav-icon" aria-hidden="true">
+                                            <span class="material-symbols-outlined">groups</span>
+                                        </span>
+                                        <span class="drawer-nav-label text-truncate" data-i18n="navPlayers">Players and buttons</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="drawer-nav-item drawer-nav-sub" type="button" data-nav="screen-music-settings">
+                                        <span class="drawer-nav-icon" aria-hidden="true">
+                                            <span class="material-symbols-outlined">queue_music</span>
+                                        </span>
+                                        <span class="drawer-nav-label text-truncate" data-i18n="navMusicSettings">Klaxio Music</span>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -122,419 +149,337 @@
         </div>
 
         <div class="drawer-footer text-center">
-            <img src="img/simon-eller-logo.svg" alt="Simon Eller Logo" style="height: 2rem;"/>
+            <img src="/img/simon-eller-logo.svg" alt="Simon Eller Logo" style="height: 2rem;">
         </div>
     </aside>
 
-    <main id="main-content" tabindex="-1" class="p-4" style="height:90vh">
-        <div class="d-flex gap-3 h-100">
+    <!-- Main -->
+    <main id="main-content" tabindex="-1">
 
-            <!-- Player 1 -->
-            <div class="player-panel card text-bg-light border flex-grow-1 rounded-4" id="panel-0">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
-                    <h2 class="fw-bold fs-2 text-center" id="name-0">Player 1</h2>
-                    <div class="display-1 fw-bold score-badge" id="score-0">0</div>
-                    <div class="fs-1 text-center" id="icon-0"></div>
+        <!-- Track bar: the Klaxio Music navbar, hidden in every other screen -->
+        <nav id="track-bar" class="bg-light border-bottom px-4 pt-3 pb-2 d-none" aria-label="Now playing">
+            <div class="d-flex align-items-center gap-3">
+                <div id="track-thumb-mask" class="track-thumb d-flex align-items-center justify-content-center">
+                    <span class="material-symbols-outlined text-body-secondary" aria-hidden="true">music_note</span>
                 </div>
-            </div>
+                <img id="track-thumb" class="track-thumb d-none" alt="">
 
-            <!-- Centre column -->
-            <div class="d-flex flex-column align-items-center justify-content-center" style="width:80px; flex-shrink:0">
-                <div class="flex-grow-1 border-start"></div>
-                <div id="phase-label" class="text-dark small fw-semibold my-2">READY</div>
-                <div class="flex-grow-1 border-start"></div>
-            </div>
-
-            <!-- Player 2 -->
-            <div class="player-panel card text-bg-light border flex-grow-1 rounded-4 position-relative" id="panel-1">
-                <div class="rounded-4"></div>
-                <div class="card-body d-flex flex-column align-items-center justify-content-center gap-3">
-                    <h2 class="fw-bold fs-2 text-center" id="name-1">Player 2</h2>
-                    <div class="display-1 fw-bold score-badge" id="score-1">0</div>
-                    <div class="fs-1 text-center" id="icon-1"></div>
+                <div class="flex-grow-1 min-w-0">
+                    <div class="d-flex align-items-center gap-2">
+                        <div id="wave-bars" class="wave-bars" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div id="track-title" class="fw-semibold text-truncate">&mdash;</div>
+                    </div>
+                    <div id="track-artist" class="small text-body-secondary text-truncate">&mdash;</div>
                 </div>
+
+                <span id="round-badge" class="badge text-bg-primary rounded-pill flex-shrink-0">&mdash;</span>
             </div>
+
+            <div id="progress-wrap" class="mt-2" title="Click to seek" data-i18n-title="musicSeekHint">
+                <div id="progress-fill"></div>
+            </div>
+        </nav>
+
+        <div id="screens">
+
+            <!-- Klaxio Classic -->
+            <section id="screen-quiz" class="screen p-4">
+                <div id="quiz-empty" class="empty-state d-none">
+                    <span class="material-symbols-outlined empty-state-icon" aria-hidden="true">groups</span>
+                    <h2 class="fw-bold fs-3 mb-1" data-i18n="noPlayersTitle">No players yet</h2>
+                    <p class="text-body-secondary mb-3" data-i18n="noPlayersHint">Register the Echo Buttons to get started.</p>
+                    <button class="btn btn-primary fw-semibold icon-link" type="button" data-nav="screen-register">
+                        <span class="material-symbols-outlined" aria-hidden="true">how_to_reg</span>
+                        <span data-i18n="btnRegisterNow">Register players</span>
+                    </button>
+                </div>
+
+                <div id="quiz-stage" class="game-stage d-none">
+                    <div class="phase-rail">
+                        <div class="flex-grow-1 border-start"></div>
+                        <div id="quiz-phase-label" class="phase-label small fw-semibold my-2" data-i18n="phaseReady">READY</div>
+                        <div class="flex-grow-1 border-start"></div>
+                    </div>
+                    <div id="quiz-players" class="players-grid"></div>
+                </div>
+            </section>
+
+            <!-- Klaxio Music -->
+            <section id="screen-music" class="screen p-4">
+                <div id="music-empty-playlist" class="empty-state d-none">
+                    <span class="material-symbols-outlined empty-state-icon" aria-hidden="true">queue_music</span>
+                    <h2 class="fw-bold fs-3 mb-1" data-i18n="musicNoPlaylist">No playlist chosen yet</h2>
+                    <p class="text-body-secondary mb-3" data-i18n="musicNoPlaylistHint">Pick a YouTube playlist to play with.</p>
+                    <button class="btn btn-primary fw-semibold icon-link" type="button" data-nav="screen-music-settings">
+                        <span class="material-symbols-outlined" aria-hidden="true">playlist_add</span>
+                        <span data-i18n="btnChoosePlaylist">Choose playlist</span>
+                    </button>
+                </div>
+
+                <div id="music-empty-players" class="empty-state d-none">
+                    <span class="material-symbols-outlined empty-state-icon" aria-hidden="true">groups</span>
+                    <h2 class="fw-bold fs-3 mb-1" data-i18n="noPlayersTitle">No players yet</h2>
+                    <p class="text-body-secondary mb-3" data-i18n="registerNeedTwo">Register at least two players to start a game.</p>
+                    <button class="btn btn-primary fw-semibold icon-link" type="button" data-nav="screen-register">
+                        <span class="material-symbols-outlined" aria-hidden="true">how_to_reg</span>
+                        <span data-i18n="btnRegisterNow">Register players</span>
+                    </button>
+                </div>
+
+                <div id="music-ready" class="empty-state d-none">
+                    <span class="material-symbols-outlined empty-state-icon" aria-hidden="true">play_circle</span>
+                    <h2 class="fw-bold fs-3 mb-1" data-i18n="musicReadyTitle">Ready to play</h2>
+                    <p id="music-ready-hint" class="text-body-secondary mb-3">&mdash;</p>
+                    <button id="btn-music-start" class="btn btn-primary btn-lg fw-semibold icon-link" type="button">
+                        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+                        <span data-i18n="btnStartGame">Start game</span>
+                    </button>
+                </div>
+
+                <div id="music-stage" class="game-stage d-none">
+                    <div class="phase-rail">
+                        <div class="flex-grow-1 border-start"></div>
+                        <div id="music-phase-label" class="phase-label small fw-semibold my-2" data-i18n="phaseReady">READY</div>
+                        <div class="flex-grow-1 border-start"></div>
+                    </div>
+                    <div id="music-players" class="players-grid"></div>
+                </div>
+            </section>
+
+            <!-- Players and Buttons -->
+            <section id="screen-register" class="screen p-4">
+                <div class="settings-card">
+                    <h1 class="fw-bold fs-2 mb-1" data-i18n="registerTitle">Players and buttons</h1>
+                    <p class="text-body-secondary" data-i18n="registerSubtitle">
+                        Every player presses their Echo Button once to claim a seat.
+                    </p>
+
+                    <div class="card border rounded-4 mb-3">
+                        <div class="card-body d-flex align-items-center gap-3">
+                            <span class="register-pulse d-inline-flex align-items-center justify-content-center rounded-circle">
+                                <span class="material-symbols-outlined" aria-hidden="true">radio_button_checked</span>
+                            </span>
+                            <div class="min-w-0">
+                                <div class="fw-semibold" data-i18n="registerWaiting">Waiting for button presses...</div>
+                                <div id="register-count" class="small text-body-secondary">&mdash;</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="register-list" class="d-flex flex-column gap-2 mb-3"></div>
+
+                    <p id="register-empty" class="text-body-secondary text-center py-4 d-none" data-i18n="registerEmpty">
+                        No players registered yet.
+                    </p>
+
+                    <div class="d-flex justify-content-end">
+                        <button id="btn-register-done" class="btn btn-primary fw-semibold icon-link" type="button">
+                            <span class="material-symbols-outlined" aria-hidden="true">check</span>
+                            <span data-i18n="btnDone">Done</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Playlist settings -->
+            <section id="screen-music-settings" class="screen p-4">
+                <div class="settings-card">
+                    <h1 class="fw-bold fs-2 mb-1" data-i18n="musicSettingsTitle">Playlist</h1>
+                    <p class="text-body-secondary" data-i18n="musicSettingsHint">
+                        Choose the YouTube playlist you want to play with.
+                    </p>
+
+                    <div class="card border rounded-4 mb-3">
+                        <div class="card-body">
+                            <h2 class="fw-semibold fs-6 mb-3 icon-link">
+                                <span class="material-symbols-outlined text-primary" aria-hidden="true">queue_music</span>
+                                <span data-i18n="musicPlaylistLabel">YouTube or YouTube Music playlist URL</span>
+                            </h2>
+
+                            <div class="d-flex gap-2 mb-2 flex-wrap">
+                                <input type="url" id="playlist-url" class="form-control flex-grow-1"
+                                       placeholder="https://www.youtube.com/playlist?list=PLxxxxxx">
+                                <button type="button" id="btn-validate" class="btn btn-outline-secondary flex-shrink-0"
+                                        data-i18n="btnValidate">Validate</button>
+                            </div>
+
+                            <div id="playlist-ok" class="small fw-semibold text-success mt-2 icon-link d-none">
+                                <span class="material-symbols-outlined fs-6" aria-hidden="true">check_circle</span>
+                                <span id="playlist-ok-text"></span>
+                            </div>
+                            <div id="playlist-err" class="small text-danger mt-2 d-none"></div>
+                        </div>
+                    </div>
+
+                    <div class="card border rounded-4 mb-3">
+                        <div class="card-body">
+                            <h2 class="fw-semibold fs-6 mb-3 icon-link">
+                                <span class="material-symbols-outlined text-primary" aria-hidden="true">format_list_numbered</span>
+                                <span data-i18n="musicRounds">Rounds</span>
+                            </h2>
+                            <div class="d-flex align-items-center gap-3">
+                                <input type="range" id="rounds-slider" class="form-range flex-grow-1" min="3" max="30" value="10">
+                                <span id="rounds-val" class="fw-bold fs-4 text-primary" style="min-width:2.5rem">10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button id="btn-music-save" class="btn btn-primary fw-semibold icon-link" type="button">
+                            <span class="material-symbols-outlined" aria-hidden="true">save</span>
+                            <span data-i18n="btnSave">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section id="screen-results" class="screen p-4">
+                <div class="results-card">
+                    <div class="text-center mb-4">
+                        <span class="material-symbols-outlined results-trophy" aria-hidden="true">trophy</span>
+                        <h1 class="fw-bold fs-2 mb-1" data-i18n="resultsTitle">Final standings</h1>
+                        <p id="results-winner" class="text-body-secondary mb-0">&mdash;</p>
+                    </div>
+
+                    <div id="podium" class="podium mb-4"></div>
+
+                    <h2 class="fw-semibold fs-6 mb-2 icon-link">
+                        <span class="material-symbols-outlined text-primary" aria-hidden="true">leaderboard</span>
+                        <span data-i18n="rankingTitle">Ranking</span>
+                    </h2>
+                    <div id="ranking" class="d-flex flex-column gap-1 mb-4"></div>
+
+                    <div id="results-tracks-wrap" class="mb-4 d-none">
+                        <h2 class="fw-semibold fs-6 mb-2 icon-link">
+                            <span class="material-symbols-outlined text-primary" aria-hidden="true">playlist_play</span>
+                            <span data-i18n="resultsTracks">Played tracks</span>
+                        </h2>
+                        <div id="results-tracks" class="d-flex flex-column gap-1"></div>
+                    </div>
+
+                    <div class="d-flex gap-2 justify-content-center flex-wrap">
+                        <button id="btn-results-again" class="btn btn-primary fw-semibold icon-link" type="button">
+                            <span class="material-symbols-outlined" aria-hidden="true">replay</span>
+                            <span data-i18n="btnPlayAgain">Play again</span>
+                        </button>
+                        <button id="btn-results-back" class="btn btn-outline-secondary icon-link" type="button">
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                            <span data-i18n="btnBackToGame">Back to the game</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </main>
 
-    <footer class="bg-light p-4 fixed-bottom">
-        <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap">
-            <button id="btn-arm" class="btn btn-primary fw-semibold icon-link" onclick="send('arm')">
-                <span class="material-symbols-outlined">play_arrow</span>
-                UNLOCK BUZZERS
+    <!-- Footer Toolbar -->
+    <footer id="app-footer" class="bg-light p-4 fixed-bottom d-none">
+        <div id="footer-quiz" class="d-flex align-items-center justify-content-center gap-2 flex-wrap d-none">
+            <button id="btn-arm" class="btn btn-primary fw-semibold icon-link" type="button">
+                <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+                <span data-i18n="btnArm">UNLOCK BUZZERS</span>
             </button>
-
-            <button id="btn-correct" class="btn btn-success fw-semibold icon-link" onclick="send('correct')" disabled>
-                <span class="material-symbols-outlined">thumb_up</span>
-                Correct
+            <button id="btn-correct" class="btn btn-success fw-semibold icon-link" type="button" disabled>
+                <span class="material-symbols-outlined" aria-hidden="true">thumb_up</span>
+                <span data-i18n="btnCorrect">Correct</span>
             </button>
-
-            <button id="btn-wrong" class="btn btn-danger fw-semibold icon-link" onclick="send('wrong')" disabled>
-                <span class="material-symbols-outlined">thumb_down</span>
-                Wrong
+            <button id="btn-wrong" class="btn btn-danger fw-semibold icon-link" type="button" disabled>
+                <span class="material-symbols-outlined" aria-hidden="true">thumb_down</span>
+                <span data-i18n="btnWrong">Wrong</span>
             </button>
-
-            <button id="btn-reset" class="btn btn-warning fw-semibold icon-link" onclick="send('reset')" disabled>
-                <span class="material-symbols-outlined">refresh</span>
-                New Question
+            <button id="btn-reset" class="btn btn-warning fw-semibold icon-link" type="button" disabled>
+                <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
+                <span data-i18n="btnReset">New Question</span>
             </button>
+            <button id="btn-scores" class="btn btn-outline-secondary fw-semibold icon-link" type="button">
+                <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+                <span data-i18n="btnResetScores">Reset Scores</span>
+            </button>
+            <button id="btn-finish" class="btn btn-outline-primary fw-semibold icon-link" type="button">
+                <span class="material-symbols-outlined" aria-hidden="true">trophy</span>
+                <span data-i18n="btnFinish">End Game</span>
+            </button>
+        </div>
 
-            <button id="btn-scores" class="btn btn-warning fw-semibold icon-link" onclick="resetScores()">
-                <span class="material-symbols-outlined">restart_alt</span>
-                Reset Scores
+        <div id="footer-music" class="d-flex align-items-center justify-content-center gap-2 flex-wrap d-none">
+            <button id="btn-play" class="btn btn-primary fw-semibold icon-link" type="button">
+                <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+                <span data-i18n="btnPlaySong">Play Song</span>
+            </button>
+            <button id="btn-skip" class="btn btn-outline-secondary fw-semibold icon-link" type="button">
+                <span class="material-symbols-outlined" aria-hidden="true">skip_next</span>
+                <span data-i18n="btnSkip">Skip</span>
+            </button>
+            <button id="btn-music-finish" class="btn btn-outline-primary fw-semibold icon-link" type="button">
+                <span class="material-symbols-outlined" aria-hidden="true">trophy</span>
+                <span data-i18n="btnFinish">End Game</span>
             </button>
         </div>
     </footer>
 
+    <!-- Overlays -->
+    <div id="buzzed-overlay" class="overlay">
+        <span class="material-symbols-outlined buzzed-icon" aria-hidden="true">notifications_active</span>
+        <div id="buzzed-name" class="buzzed-name">&mdash;</div>
+        <p class="text-body-secondary text-center px-3 mb-0" data-i18n="musicOverlayHint">
+            Give your answer, then reveal the song.
+        </p>
+        <button id="btn-reveal" class="btn btn-warning btn-lg fw-semibold icon-link" type="button">
+            <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
+            <span data-i18n="btnShowAnswer">Show Answer</span>
+        </button>
+    </div>
+
+    <div id="reveal-overlay" class="overlay">
+        <div class="reveal-card card border rounded-4">
+            <div class="card-body text-center">
+                <div class="reveal-buzzer badge rounded-pill text-bg-warning mb-3 icon-link">
+                    <span class="material-symbols-outlined fs-6" aria-hidden="true">person</span>
+                    <span id="reveal-buzzer-name">&mdash;</span>
+                    <span class="fw-normal ms-1" data-i18n="musicBuzzedBy">buzzed</span>
+                </div>
+                <br>
+                <img id="reveal-thumb" class="reveal-thumb mb-3" src="" alt="">
+                <h2 id="reveal-title" class="fw-bold fs-3 mb-1">&mdash;</h2>
+                <p id="reveal-artist" class="text-primary fw-semibold mb-4">&mdash;</p>
+
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <button id="btn-reveal-correct" class="btn btn-success btn-lg fw-semibold icon-link" type="button">
+                        <span class="material-symbols-outlined" aria-hidden="true">thumb_up</span>
+                        <span data-i18n="btnCorrect">Correct</span>
+                    </button>
+                    <button id="btn-reveal-wrong" class="btn btn-danger btn-lg fw-semibold icon-link" type="button">
+                        <span class="material-symbols-outlined" aria-hidden="true">thumb_down</span>
+                        <span data-i18n="btnWrong">Wrong</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="yt-error" class="alert alert-warning shadow align-items-center gap-2" role="alert">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <span id="yt-error-text"></span>
+    </div>
+
     <div id="toast" class="badge bg-black rounded-pill px-4 py-2 fs-6 fw-normal"></div>
 
-    <script>
-      // i18n
-      let S = {};
-      let currentLang = "en";
-
-      function applyStrings(strings) {
-          S = strings;
-          document.getElementById("btn-arm").innerHTML = `<span class="material-symbols-outlined">play_arrow</span> ${S.btnArm ?? "UNLOCK BUZZERS"}`;
-          document.getElementById("btn-correct").innerHTML = `<span class="material-symbols-outlined">thumb_up</span> ${S.btnCorrect ?? "Correct"}`;
-          document.getElementById("btn-wrong").innerHTML = `<span class="material-symbols-outlined">thumb_down</span> ${S.btnWrong ?? "Wrong"}`;
-          document.getElementById("btn-reset").innerHTML = `<span class="material-symbols-outlined">refresh</span> ${S.btnReset ?? "New Question"}`;
-          document.getElementById("btn-scores").innerHTML = `<span class="material-symbols-outlined">restart_alt</span> ${S.btnResetScores ?? "Reset Scores"}`;
-          document.getElementById("conn-text").textContent = connected
-          ? (S.connConnected ?? "Connected") : (S.connConnecting ?? "Connecting...");
-
-          // --- Frontend UI strings ---
-          document.getElementById("skip-link").textContent = S.jumpToContent ?? "Jump to content";
-
-          const btnOpen = document.getElementById("drawer-open");
-          if (btnOpen) {
-              btnOpen.setAttribute("aria-label", S.openMenu ?? "Open menu");
-              btnOpen.setAttribute("title", S.openMenu ?? "Open menu");
-          }
-
-          const btnClose = document.getElementById("drawer-close");
-          if (btnClose) {
-              btnClose.setAttribute("aria-label", S.closeMenu ?? "Close menu");
-              btnClose.setAttribute("title", S.closeMenu ?? "Close menu");
-          }
-
-          document.getElementById("nav-app-group-text").textContent = S.navApp ?? "App";
-          document.getElementById("nav-app-sub-text").textContent = S.navApp ?? "App";
-          document.getElementById("nav-settings-group-text").textContent = S.navSettings ?? "Settings";
-          document.getElementById("nav-language-text").textContent = (S.navLanguage ?? "Language") + ": ";
-          document.getElementById("lang-dropdown").setAttribute("aria-label", S.chooseLanguage ?? "Choose language");
-
-          applyPhaseLabel(currentPhase);
-      }
-
-      function setLang(lang) {
-          currentLang = lang;
-          document.getElementById("lang-label").textContent = lang === "de" ? "DE" : "EN";
-
-          document.querySelectorAll("[data-lang]").forEach(function (el) {
-              if (el.dataset.lang === lang) {
-                  el.setAttribute("aria-current", "true");
-              } else {
-                  el.removeAttribute("aria-current");
-              }
-          });
-
-          send("lang_" + currentLang);
-      }
-
-      // WebSocket
-      const WS_URL = "ws://localhost:8765";
-      let ws = null, connected = false, reconnectTimer = null;
-
-      function connect() {
-          ws = new WebSocket(WS_URL);
-          ws.onopen = () => {
-            connected = true;
-            const dot = document.getElementById("conn-dot");
-            dot.classList.replace("bg-danger", "bg-success");
-            dot.classList.add("ok");
-            document.getElementById("conn-text").textContent = S.connConnected ?? "Connected";
-            toast(S.toastConnected ?? "Server connected ✓");
-            clearTimeout(reconnectTimer);
-          };
-          ws.onclose = () => {
-            connected = false;
-            const dot = document.getElementById("conn-dot");
-            dot.classList.replace("bg-success", "bg-danger");
-            dot.classList.remove("ok");
-            document.getElementById("conn-text").textContent = S.connReconnecting ?? "Disconnected - reconnecting...";
-            reconnectTimer = setTimeout(connect, 2000);
-          };
-
-          ws.onerror = () => ws.close();
-          ws.onmessage = ({ data }) => {
-            try { handleEvent(JSON.parse(data)); } catch(e) { console.error("WS parse error", e); }
-          };
-      }
-
-      function send(cmd) {
-          if (ws && ws.readyState === WebSocket.OPEN)
-          ws.send(JSON.stringify({ cmd }));
-      }
-
-      // State machine
-      let currentPhase = "waiting", currentWinner = null;
-
-      function handleEvent(msg) {
-        if (msg.strings) applyStrings(msg.strings);
-        if (msg.names) {
-          document.getElementById("name-0").textContent = msg.names[0];
-          document.getElementById("name-1").textContent = msg.names[1];
-        }
-          switch (msg.event) {
-            case "init":
-                document.getElementById("name-0").textContent = msg.names[0];
-                document.getElementById("name-1").textContent = msg.names[1];
-                updateScores(msg.scores);
-                applyPhase(msg.phase, null);
-                break;
-            case "armed": applyPhase("armed",   null); break;
-            case "buzzed":
-              applyPhase("buzzed",  msg.winner);
-              toast((S.toastBuzzed ?? "{0} buzzed first!").replace("{0}", msg.name));
-              break;
-            case "correct":
-              applyPhase("correct", msg.winner);
-              updateScores(msg.scores, msg.winner);
-              break;
-            case "wrong":
-              applyPhase("wrong",   msg.winner);
-              break;
-            case "reset":
-              applyPhase("waiting", null);
-              break;
-            case "reset_scores":
-              updateScores(msg.scores);
-              applyPhase("waiting", null);
-              break;
-          }
-      }
-
-      function applyPhase(phase, winner) {
-        currentPhase = phase; currentWinner = winner;
-
-        [0, 1].forEach(i => {
-          const panel = document.getElementById(`panel-${i}`);
-
-          panel.classList.remove(
-            "bg-light", "bg-info", "bg-success", "bg-danger", "bg-warning",
-            "text-bg-light", "text-bg-info", "text-bg-success", "text-bg-danger", "text-bg-warning", "text-bg-dark", "opacity-25"
-          );
-
-          // Setze den Standard-Hintergrund inkl. korrekter Textfarbe zurück
-          panel.classList.add("text-bg-light");
-
-          document.getElementById(`icon-${i}`).innerHTML = phaseIcon(phase, i, winner);
-        });
-
-        if (winner !== null) {
-          const winnerPanel = document.getElementById(`panel-${winner}`);
-          const loserPanel = document.getElementById(`panel-${1 - winner}`);
-
-          // Standardhintergrund entfernen
-          winnerPanel.classList.remove("text-bg-light");
-          loserPanel.classList.remove("text-bg-light");
-
-          // Winner panel status (nur text-bg-* Klassen um Hintergrund + Textkontrast zu setzen)
-          if (phase === "buzzed") {
-              winnerPanel.classList.add("text-bg-info");
-          } else if (phase === "correct") {
-              winnerPanel.classList.add("text-bg-success");
-          } else if (phase === "wrong") {
-              winnerPanel.classList.add("text-bg-danger");
-          }
-
-          // Loser panel status auf Grau und leicht transparent (ausgegraut)
-          loserPanel.classList.add("text-bg-dark", "opacity-25");
-        }
-
-        applyPhaseLabel(phase);
-        document.getElementById("btn-arm").disabled = phase === "armed" || phase === "buzzed";
-        document.getElementById("btn-correct").disabled = phase !== "buzzed";
-        document.getElementById("btn-wrong").disabled = phase !== "buzzed";
-        document.getElementById("btn-reset").disabled = phase === "waiting" || phase === "armed";
-    }
-
-      function applyPhaseLabel(phase) {
-          const el = document.getElementById("phase-label");
-          el.className = `text-dark small fw-semibold my-2 ${phase}`;
-          const map = {
-            waiting: S.phaseReady   ?? "READY",
-            armed:   S.phaseArmed   ?? "BUZZ!",
-            buzzed:  S.phaseBuzzed  ?? "BUZZED",
-            correct: S.phaseCorrect ?? "CORRECT",
-            wrong:   S.phaseWrong   ?? "WRONG",
-          };
-          el.textContent = map[phase] ?? phase.toUpperCase();
-      }
-
-      function phaseIcon(phase, idx, winner) {
-          const icon = name => `<span class="material-symbols-outlined fs-1">${name}</span>`;
-
-          if (phase === "armed") return icon("my_location");
-          if (phase === "buzzed"  && idx === winner) return icon("notifications_active");
-          if (phase === "correct" && idx === winner) return icon("check_circle");
-          if (phase === "wrong"   && idx === winner) return icon("cancel");
-          if (["buzzed","correct","wrong"].includes(phase) && idx !== winner) return icon("hourglass_empty");
-          return icon("radio_button_unchecked");
-      }
-
-      function updateScores(scores, bumped = null) {
-          [0, 1].forEach(i => {
-            const el = document.getElementById(`score-${i}`);
-            el.textContent = scores[i];
-
-            if (i === bumped) {
-                el.classList.remove("bump");
-                void el.offsetWidth;
-                el.classList.add("bump");
-            }
-          });
-      }
-
-      function resetScores() {
-        if (confirm(S.confirmReset ?? "Really reset scores?")) send("reset_scores");
-      }
-
-      // Keyboard shortcuts
-      document.addEventListener("keydown", e => {
-          if (e.target.closest("input, textarea, select, button, a, [contenteditable]")) return;
-
-          if (e.code === "Space" || e.code === "Enter") {
-            e.preventDefault();
-            if (currentPhase === "waiting") send("arm");
-            else if (currentPhase !== "armed") send("reset");
-          }
-
-          if (e.key === "+" || e.key === "1") send("correct");
-          if (e.key === "-" || e.key === "0") send("wrong");
-          if (e.key === "r" || e.key === "R") send("reset");
-      });
-
-      // Toast
-      let toastTimer = null;
-      function toast(msg) {
-          const el = document.getElementById("toast");
-          el.textContent = msg;
-          el.classList.add("show");
-          clearTimeout(toastTimer);
-          toastTimer = setTimeout(() => el.classList.remove("show"), 2500);
-      }
-
-      // Drawer
-      (function () {
-          'use strict';
-
-          var STORAGE_KEY = 'drawer-open-left';
-          var drawer   = document.getElementById('drawer-nav');
-          var backdrop = document.getElementById('drawer-backdrop');
-          var main     = document.getElementById('main-content');
-          var openBtn  = document.getElementById('drawer-open');
-          var wide     = window.matchMedia('(min-width: 768px)');
-
-          if (!drawer) {
-              return;
-          }
-
-          var togglers = document.querySelectorAll('[data-drawer-toggle]');
-
-          function isOpen() {
-              return drawer.classList.contains('show');
-          }
-
-          function setDrawer(open, options) {
-              options = options || {};
-
-              var overlay = open && !wide.matches;
-              var focusWasInside = drawer.contains(document.activeElement);
-
-              drawer.classList.toggle('show', open);
-              document.body.classList.toggle('drawer-open-left', open);
-
-              togglers.forEach(function (btn) {
-                  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-              });
-
-              if (backdrop) {
-                  backdrop.hidden = !overlay;
-              }
-
-              if (main) {
-                  main.inert = overlay;
-              }
-
-              if (options.manageFocus !== false) {
-                  if (overlay) {
-                      var dismiss = drawer.querySelector('[data-drawer-dismiss]');
-                      if (dismiss) {
-                          dismiss.focus();
-                      }
-                  } else if (!open && focusWasInside && openBtn) {
-                      openBtn.focus();
-                  }
-              }
-
-              if (options.remember !== false) {
-                  try {
-                      localStorage.setItem(STORAGE_KEY, open ? '1' : '0');
-                  } catch (e) {}
-              }
-          }
-
-          togglers.forEach(function (btn) {
-              btn.addEventListener('click', function () {
-                  setDrawer(!isOpen());
-              });
-          });
-
-          if (backdrop) {
-              backdrop.addEventListener('click', function () {
-                  setDrawer(false);
-              });
-          }
-
-          document.addEventListener('keydown', function (e) {
-              if (e.key === 'Escape' && isOpen() && !wide.matches) {
-                  setDrawer(false);
-              }
-          });
-
-          wide.addEventListener('change', function () {
-              setDrawer(isOpen(), { remember: false, manageFocus: false });
-          });
-
-          var stored = null;
-          try {
-              stored = localStorage.getItem(STORAGE_KEY);
-          } catch (e) {
-              stored = null;
-          }
-          setDrawer(stored === null ? wide.matches : stored === '1', {
-              remember: false,
-              manageFocus: false
-          });
-          document.body.classList.add('drawers-ready');
-      }());
-
-      (function () {
-          'use strict';
-          document.addEventListener('click', function (e) {
-              var btn = e.target.closest('[data-lang]');
-              if (btn && typeof window.setLang === 'function') {
-                  window.setLang(btn.dataset.lang);
-              }
-          });
-      }());
-
-      connect();
-    </script>
+    <!-- Hidden YouTube IFrame player -->
+    <div id="yt-container"><div id="yt-player"></div></div>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/state.js"></script>
+    <script src="/js/ws-client.js"></script>
+    <script src="/js/yt-player.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/quiz.js"></script>
+    <script src="/js/music.js"></script>
+    <script src="/js/drawer.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

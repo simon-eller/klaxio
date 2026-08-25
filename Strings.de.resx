@@ -5,51 +5,139 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter</value></resheader>
 
-  <!-- Console / Server strings -->
+  <!-- ══ Console / server strings ══════════════════════════════════ -->
   <data name="AppTitle"          xml:space="preserve"><value>KLAXIO</value></data>
   <data name="BtSearching"       xml:space="preserve"><value>[BT] Suche nach Echo-Buttons...</value></data>
   <data name="BtFound"           xml:space="preserve"><value>[BT] Button gefunden: {0}</value></data>
   <data name="BtNone"            xml:space="preserve"><value>[BT] Keine gekoppelten Echo-Buttons gefunden. Bitte zuerst in Windows koppeln.</value></data>
   <data name="BtConnected"       xml:space="preserve"><value>[BT] Verbunden: {0}</value></data>
   <data name="BtDisconnected"    xml:space="preserve"><value>[BT] Getrennt: {0}</value></data>
-  <data name="BtnPressed"        xml:space="preserve"><value>[BTN] Gedrückt: {0} → Spieler {1}</value></data>
+  <data name="BtnPressed"        xml:space="preserve"><value>[BTN] Gedrückt: {0} → {1}</value></data>
+  <data name="BtnRegistered"     xml:space="preserve"><value>[BTN] Registriert: {0} → {1}</value></data>
+  <data name="BtnBuzzed"         xml:space="preserve"><value>[BTN] Gebuzzert: {0}</value></data>
   <data name="WsListening"       xml:space="preserve"><value>[WS] Server lauscht auf {0}</value></data>
   <data name="WsClientConn"      xml:space="preserve"><value>[WS] Client verbunden: {0}</value></data>
   <data name="WsClientDisconn"   xml:space="preserve"><value>[WS] Client getrennt: {0}</value></data>
   <data name="QuizArmed"         xml:space="preserve"><value>[QUIZ] Buzzers freigegeben.</value></data>
-  <data name="QuizCorrect"       xml:space="preserve"><value>[QUIZ] Richtig! Spieler {0} bekommt einen Punkt → {1}</value></data>
-  <data name="QuizWrong"         xml:space="preserve"><value>[QUIZ] Falsch! Spieler {0} bekommt keinen Punkt.</value></data>
+  <data name="QuizCorrect"       xml:space="preserve"><value>[QUIZ] Richtig! {0} bekommt einen Punkt → {1}</value></data>
+  <data name="QuizWrong"         xml:space="preserve"><value>[QUIZ] Falsch! {0} bekommt keinen Punkt.</value></data>
   <data name="QuizReset"         xml:space="preserve"><value>[QUIZ] Neue Frage.</value></data>
   <data name="QuizResetScores"   xml:space="preserve"><value>[QUIZ] Punktestand zurückgesetzt.</value></data>
-  <data name="Hotkeys"           xml:space="preserve"><value>Tastenkürzel: [A] Arm  [C] Richtig  [W] Falsch  [R] Reset  [Q] Beenden</value></data>
+  <data name="QuizFinished"      xml:space="preserve"><value>[QUIZ] Spiel beendet - zeige Ergebnisse.</value></data>
+  <data name="MusicConfig"       xml:space="preserve"><value>[MUSIC] Playlist: {0} ({1} Runden)</value></data>
+  <data name="MusicStarted"      xml:space="preserve"><value>[MUSIC] Spiel mit {0} Runden gestartet.</value></data>
+  <data name="MusicRoundStart"   xml:space="preserve"><value>[MUSIC] Runde {0} / {1}</value></data>
+  <data name="MusicSkip"         xml:space="preserve"><value>[MUSIC] Song übersprungen.</value></data>
+  <data name="MusicOver"         xml:space="preserve"><value>[MUSIC] Alle Runden gespielt - zeige Ergebnisse.</value></data>
+  <data name="Hotkeys"           xml:space="preserve"><value>Tastenkürzel: [A] Freigeben / Abspielen  [C] Richtig  [W] Falsch  [S] Überspringen  [R] Reset / Auflösen  [Q] Beenden</value></data>
   <data name="Quitting"          xml:space="preserve"><value>[INFO] Beende...</value></data>
   <data name="BrowserOpening"    xml:space="preserve"><value>[INFO] Öffne Browser auf http://localhost:8765/</value></data>
+  <data name="PlayerN"           xml:space="preserve"><value>Spieler*in {0}</value></data>
 
-  <!-- UI strings sent to frontend -->
-  <data name="Player1"           xml:space="preserve"><value>Spieler*in 1</value></data>
-  <data name="Player2"           xml:space="preserve"><value>Spieler*in 2</value></data>
-  <data name="PhaseReady"        xml:space="preserve"><value>BEREIT</value></data>
-  <data name="PhaseArmed"        xml:space="preserve"><value>BUZZERN!</value></data>
-  <data name="PhaseBuzzed"       xml:space="preserve"><value>GEBUZZERT</value></data>
-  <data name="PhaseCorrect"      xml:space="preserve"><value>RICHTIG</value></data>
-  <data name="PhaseWrong"        xml:space="preserve"><value>FALSCH</value></data>
-  <data name="BtnArm"            xml:space="preserve"><value>BUTTONS FREISCHALTEN</value></data>
-  <data name="BtnCorrect"        xml:space="preserve"><value>Richtig</value></data>
-  <data name="BtnWrong"          xml:space="preserve"><value>Falsch</value></data>
-  <data name="BtnReset"          xml:space="preserve"><value>Neue Frage</value></data>
-  <data name="BtnResetScores"    xml:space="preserve"><value>Punkte zurücksetzen</value></data>
-  <data name="ToastBuzzed"       xml:space="preserve"><value>{0} buzzert zuerst!</value></data>
-  <data name="ConfirmReset"      xml:space="preserve"><value>Punktestand wirklich zurücksetzen?</value></data>
-  <data name="ConnConnecting"    xml:space="preserve"><value>Verbinde...</value></data>
-  <data name="ConnConnected"     xml:space="preserve"><value>Verbunden</value></data>
-  <data name="ConnReconnecting"  xml:space="preserve"><value>Getrennt - verbinde neu...</value></data>
-  <data name="ToastConnected"    xml:space="preserve"><value>Server verbunden ✓</value></data>
-  <data name="LangToggle"        xml:space="preserve"><value>DE</value></data>
-  <data name="JumpToContent"     xml:space="preserve"><value>Zum Inhalt springen</value></data>
-  <data name="OpenMenu"          xml:space="preserve"><value>Menü öffnen</value></data>
-  <data name="CloseMenu"         xml:space="preserve"><value>Menü schließen</value></data>
-  <data name="NavApp"            xml:space="preserve"><value>App</value></data>
-  <data name="NavSettings"       xml:space="preserve"><value>Einstellungen</value></data>
-  <data name="NavLanguage"       xml:space="preserve"><value>Sprache</value></data>
-  <data name="ChooseLanguage"    xml:space="preserve"><value>Sprache wählen</value></data>
+  <!-- ══ UI strings (shipped to the browser as "ui.*") ═════════════ -->
+
+  <!-- App chrome / navigation -->
+  <data name="ui.appName"            xml:space="preserve"><value>Klaxio</value></data>
+  <data name="ui.jumpToContent"      xml:space="preserve"><value>Zum Inhalt springen</value></data>
+  <data name="ui.openMenu"           xml:space="preserve"><value>Menü öffnen</value></data>
+  <data name="ui.closeMenu"          xml:space="preserve"><value>Menü schließen</value></data>
+  <data name="ui.navGames"           xml:space="preserve"><value>Spiele</value></data>
+  <data name="ui.navQuiz"            xml:space="preserve"><value>Klassisches Quiz</value></data>
+  <data name="ui.navMusic"           xml:space="preserve"><value>Musik Quiz</value></data>
+  <data name="ui.navSettings"        xml:space="preserve"><value>Einstellungen</value></data>
+  <data name="ui.navLanguage"        xml:space="preserve"><value>Sprache</value></data>
+  <data name="ui.navPlayers"         xml:space="preserve"><value>Spielende und Buttons</value></data>
+  <data name="ui.navMusicSettings"   xml:space="preserve"><value>Playlist</value></data>
+  <data name="ui.chooseLanguage"     xml:space="preserve"><value>Sprache wählen</value></data>
+  <data name="ui.connConnecting"     xml:space="preserve"><value>Verbinde...</value></data>
+  <data name="ui.connConnected"      xml:space="preserve"><value>Verbunden</value></data>
+  <data name="ui.connReconnecting"   xml:space="preserve"><value>Getrennt - verbinde neu...</value></data>
+  <data name="ui.toastConnected"     xml:space="preserve"><value>Server verbunden ✓</value></data>
+  <data name="ui.btnSave"            xml:space="preserve"><value>Speichern</value></data>
+  <data name="ui.btnDone"            xml:space="preserve"><value>Fertig</value></data>
+
+  <!-- Players and buttons -->
+  <data name="ui.registerTitle"      xml:space="preserve"><value>Spielende und Buttons</value></data>
+  <data name="ui.registerSubtitle"   xml:space="preserve"><value>Alle drücken einmal ihren Echo Button, um einen Platz zu belegen.</value></data>
+  <data name="ui.registerWaiting"    xml:space="preserve"><value>Warte auf Tastendruck...</value></data>
+  <data name="ui.registerEmpty"      xml:space="preserve"><value>Noch niemand registriert.</value></data>
+  <data name="ui.registerCount"      xml:space="preserve"><value>{0} von {1} Spieler*innen aktiv</value></data>
+  <data name="ui.registerNeedTwo"    xml:space="preserve"><value>Für ein Spiel braucht es mindestens zwei Spieler*innen.</value></data>
+  <data name="ui.registerRemove"     xml:space="preserve"><value>Entfernen</value></data>
+  <data name="ui.registerActivate"   xml:space="preserve"><value>Wieder mitspielen lassen</value></data>
+  <data name="ui.registerDeactivate" xml:space="preserve"><value>Aussetzen lassen</value></data>
+  <data name="ui.registerName"       xml:space="preserve"><value>Name</value></data>
+  <data name="ui.statusInactive"     xml:space="preserve"><value>setzt aus</value></data>
+  <data name="ui.confirmRemove"      xml:space="preserve"><value>{0} wirklich aus dem Spiel entfernen?</value></data>
+  <data name="ui.toastRegistered"    xml:space="preserve"><value>{0} ist dabei.</value></data>
+  <data name="ui.toastButtonKnown"   xml:space="preserve"><value>Dieser Button gehört bereits zu {0}.</value></data>
+
+  <!-- Klaxio (classic) -->
+  <data name="ui.phaseReady"         xml:space="preserve"><value>BEREIT</value></data>
+  <data name="ui.phaseArmed"         xml:space="preserve"><value>BUZZERN!</value></data>
+  <data name="ui.phaseBuzzed"        xml:space="preserve"><value>GEBUZZERT</value></data>
+  <data name="ui.phaseCorrect"       xml:space="preserve"><value>RICHTIG</value></data>
+  <data name="ui.phaseWrong"         xml:space="preserve"><value>FALSCH</value></data>
+  <data name="ui.phaseOver"          xml:space="preserve"><value>ERGEBNIS</value></data>
+  <data name="ui.btnArm"             xml:space="preserve"><value>BUTTONS FREISCHALTEN</value></data>
+  <data name="ui.btnCorrect"         xml:space="preserve"><value>Richtig</value></data>
+  <data name="ui.btnWrong"           xml:space="preserve"><value>Falsch</value></data>
+  <data name="ui.btnReset"           xml:space="preserve"><value>Neue Frage</value></data>
+  <data name="ui.btnResetScores"     xml:space="preserve"><value>Punkte zurücksetzen</value></data>
+  <data name="ui.btnFinish"          xml:space="preserve"><value>Spiel beenden</value></data>
+  <data name="ui.toastBuzzed"        xml:space="preserve"><value>{0} buzzert zuerst!</value></data>
+  <data name="ui.confirmReset"       xml:space="preserve"><value>Punktestand wirklich zurücksetzen?</value></data>
+  <data name="ui.confirmFinish"      xml:space="preserve"><value>Spiel beenden und die Sieger*innen verkünden?</value></data>
+  <data name="ui.noPlayersTitle"     xml:space="preserve"><value>Noch keine Spieler*innen</value></data>
+  <data name="ui.noPlayersHint"      xml:space="preserve"><value>Registriere zuerst die Echo Buttons.</value></data>
+  <data name="ui.btnRegisterNow"     xml:space="preserve"><value>Spieler*innen registrieren</value></data>
+
+  <!-- Klaxio Music -->
+  <data name="ui.musicSettingsTitle" xml:space="preserve"><value>Playlist</value></data>
+  <data name="ui.musicSettingsHint"  xml:space="preserve"><value>Wähle die YouTube-Playlist, mit der gespielt wird.</value></data>
+  <data name="ui.musicPlaylistLabel" xml:space="preserve"><value>YouTube oder YouTube Music Playlist-URL</value></data>
+  <data name="ui.musicRounds"        xml:space="preserve"><value>Runden</value></data>
+  <data name="ui.btnValidate"        xml:space="preserve"><value>Prüfen</value></data>
+  <data name="ui.musicLoaded"        xml:space="preserve"><value>{0} Titel geladen und gemischt</value></data>
+  <data name="ui.musicSaved"         xml:space="preserve"><value>Einstellungen gespeichert.</value></data>
+  <data name="ui.musicNoPlaylist"    xml:space="preserve"><value>Noch keine Playlist gewählt</value></data>
+  <data name="ui.musicNoPlaylistHint" xml:space="preserve"><value>Wähle eine YouTube-Playlist zum Spielen aus.</value></data>
+  <data name="ui.btnChoosePlaylist"  xml:space="preserve"><value>Playlist wählen</value></data>
+  <data name="ui.musicReadyTitle"    xml:space="preserve"><value>Bereit zum Spielen</value></data>
+  <data name="ui.musicReadyHint"     xml:space="preserve"><value>{0} Runden mit {1} Spieler*innen.</value></data>
+  <data name="ui.btnStartGame"       xml:space="preserve"><value>Spiel starten</value></data>
+  <data name="ui.btnPlaySong"        xml:space="preserve"><value>Song abspielen</value></data>
+  <data name="ui.btnSkip"            xml:space="preserve"><value>Überspringen</value></data>
+  <data name="ui.btnShowAnswer"      xml:space="preserve"><value>Antwort anzeigen</value></data>
+  <data name="ui.musicRoundBadge"    xml:space="preserve"><value>Runde {0} / {1}</value></data>
+  <data name="ui.musicPhasePlaying"  xml:space="preserve"><value>LÄUFT</value></data>
+  <data name="ui.musicPhaseReveal"   xml:space="preserve"><value>AUFLÖSUNG</value></data>
+  <data name="ui.musicBuzzedBy"      xml:space="preserve"><value>hat gebuzzert</value></data>
+  <data name="ui.musicOverlayHint"   xml:space="preserve"><value>Antwort sagen, dann das Song auflösen.</value></data>
+  <data name="ui.musicUnknown"       xml:space="preserve"><value>???</value></data>
+  <data name="ui.musicSeekHint"      xml:space="preserve"><value>Zum Spulen klicken</value></data>
+  <data name="ui.toastMusicCorrect"  xml:space="preserve"><value>Richtig! {0} bekommt einen Punkt.</value></data>
+  <data name="ui.toastMusicWrong"    xml:space="preserve"><value>Falsch! Alle anderen bekommen einen Punkt.</value></data>
+  <data name="ui.toastMusicSkipped"  xml:space="preserve"><value>Song übersprungen.</value></data>
+  <data name="ui.errNoUrl"           xml:space="preserve"><value>Bitte eine YouTube-Playlist-URL eingeben.</value></data>
+  <data name="ui.errPlaylistId"      xml:space="preserve"><value>Playlist-ID konnte nicht gelesen werden. Die URL muss ?list=... enthalten.</value></data>
+  <data name="ui.errPlayerReady"     xml:space="preserve"><value>YouTube-Player noch nicht bereit - bitte kurz warten und erneut versuchen.</value></data>
+  <data name="ui.errPlaylistEmpty"   xml:space="preserve"><value>Playlist ist leer, privat oder Einbettung ist deaktiviert.</value></data>
+  <data name="ui.errNoPlaylist"      xml:space="preserve"><value>Keine Playlist geladen - bitte zuerst prüfen.</value></data>
+  <data name="ui.errYtInvalid"        xml:space="preserve"><value>Ungültiger Video-Parameter.</value></data>
+  <data name="ui.errYtHtml5"          xml:space="preserve"><value>Fehler im HTML5-Player.</value></data>
+  <data name="ui.errYtNotFound"       xml:space="preserve"><value>Video nicht gefunden oder privat.</value></data>
+  <data name="ui.errYtEmbed"          xml:space="preserve"><value>Einbetten ist für dieses Video deaktiviert.</value></data>
+  <data name="ui.errYtOther"          xml:space="preserve"><value>Der YouTube-Player meldet einen Fehler.</value></data>
+
+  <!-- Results / ranking -->
+  <data name="ui.resultsTitle"       xml:space="preserve"><value>Endstand</value></data>
+  <data name="ui.resultsWinner"      xml:space="preserve"><value>{0} gewinnt!</value></data>
+  <data name="ui.resultsWinners"     xml:space="preserve"><value>Gleichstand: {0}</value></data>
+  <data name="ui.resultsNoScore"     xml:space="preserve"><value>Noch keine Punkte erspielt.</value></data>
+  <data name="ui.resultsTracks"      xml:space="preserve"><value>Gespielte Titel</value></data>
+  <data name="ui.rankingTitle"       xml:space="preserve"><value>Rangliste</value></data>
+  <data name="ui.rankPoints"         xml:space="preserve"><value>Pkt</value></data>
+  <data name="ui.btnPlayAgain"       xml:space="preserve"><value>Nochmal spielen</value></data>
+  <data name="ui.btnBackToGame"      xml:space="preserve"><value>Zurück zum Spiel</value></data>
 </root>
