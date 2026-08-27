@@ -113,12 +113,19 @@
   <data name="ui.musicPhasePlaying"  xml:space="preserve"><value>LÄUFT</value></data>
   <data name="ui.musicPhaseReveal"   xml:space="preserve"><value>AUFLÖSUNG</value></data>
   <data name="ui.musicBuzzedBy"      xml:space="preserve"><value>hat gebuzzert</value></data>
-  <data name="ui.musicOverlayHint"   xml:space="preserve"><value>Antwort sagen, dann das Song auflösen.</value></data>
+  <data name="ui.musicOverlayHint"   xml:space="preserve"><value>Antwort sagen, dann den Song auflösen.</value></data>
   <data name="ui.musicUnknown"       xml:space="preserve"><value>???</value></data>
   <data name="ui.musicSeekHint"      xml:space="preserve"><value>Zum Spulen klicken</value></data>
   <data name="ui.toastMusicCorrect"  xml:space="preserve"><value>Richtig! {0} bekommt einen Punkt.</value></data>
   <data name="ui.toastMusicWrong"    xml:space="preserve"><value>Falsch! Alle anderen bekommen einen Punkt.</value></data>
   <data name="ui.toastMusicSkipped"  xml:space="preserve"><value>Song übersprungen.</value></data>
+  <data name="ui.toastMusicSkippedTrack" xml:space="preserve"><value>Übersprungen: {0}</value></data>
+  <data name="ui.musicSkippedBadge"  xml:space="preserve"><value>übersprungen</value></data>
+  <data name="ui.musicSkippedTitle"  xml:space="preserve"><value>Song übersprungen</value></data>
+  <data name="ui.btnNextSong"        xml:space="preserve"><value>Nächster Song</value></data>
+  <data name="ui.btnClose"           xml:space="preserve"><value>Schließen</value></data>
+  <data name="ui.trackOpenYt"        xml:space="preserve"><value>Auf YouTube öffnen</value></data>
+  <data name="ui.trackOpenYtMusic"   xml:space="preserve"><value>Auf YouTube Music öffnen</value></data>
   <data name="ui.errNoUrl"           xml:space="preserve"><value>Bitte eine YouTube-Playlist-URL eingeben.</value></data>
   <data name="ui.errPlaylistId"      xml:space="preserve"><value>Playlist-ID konnte nicht gelesen werden. Die URL muss ?list=... enthalten.</value></data>
   <data name="ui.errPlayerReady"     xml:space="preserve"><value>YouTube-Player noch nicht bereit - bitte kurz warten und erneut versuchen.</value></data>

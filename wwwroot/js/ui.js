@@ -31,6 +31,7 @@
         if (!$(id)) return;
         s.screen = id;
         if (id === 'screen-quiz' || id === 'screen-music') s.lastGameScreen = id;
+        if (id !== 'screen-music') s.skipRevealed = false;   // do not pop up again on the way back
         render();
         const main = $('main-content');
         if (main) main.scrollTop = 0;
@@ -240,15 +241,28 @@
         buzzedOv.classList.toggle('show', buzzed);
         if (buzzed) $('buzzed-name').textContent = buzzer ? buzzer.name : '—';
 
-        const revealOv = $('reveal-overlay');
-        const reveal   = onMusic && phase === 'reveal';
+        // A skipped song is revealed on the same card, minus the evaluation buttons.
+        const revealOv  = $('reveal-overlay');
+        const skipShown = onMusic && phase === 'waiting' && s.skipRevealed;
+        const reveal    = onMusic && (phase === 'reveal' || skipShown);
         revealOv.classList.toggle('show', reveal);
         if (reveal) {
             const track = s.currentTrack || {};
             const dash  = '—';
+
+            show($('reveal-buzzer'),       !skipShown);
+            show($('reveal-actions'),      !skipShown);
+            show($('reveal-skipped'),      skipShown);
+            show($('reveal-skip-actions'), skipShown);
+
             $('reveal-buzzer-name').textContent = buzzer ? buzzer.name : dash;
-            $('reveal-title').textContent       = track.title  || dash;
             $('reveal-artist').textContent      = track.artist || dash;
+
+            const link = $('reveal-title');
+            const url  = s.trackUrl(track.videoId);
+            link.textContent = track.title || dash;
+            if (url) { link.href = url; link.title = trackOpenHint(); }
+            else     { link.removeAttribute('href'); link.removeAttribute('title'); }
 
             const img = $('reveal-thumb');
             if (track.thumb) { img.src = track.thumb; img.classList.remove('d-none'); }
@@ -332,6 +346,11 @@
     }
 
     /* Results */
+    /** Tooltip for a track link - the playlist decides which service it opens. */
+    function trackOpenHint() {
+        return window.i18n.t(window.appState.isMusicPlaylist() ? 'trackOpenYtMusic' : 'trackOpenYt');
+    }
+
     /**
      * Dense ranking (1, 1, 3, ...) over the players of one game.
      * Somebody who is sitting out only shows up if they scored before that.
@@ -416,15 +435,32 @@
     }
 
     function renderTrackHistory(tracks) {
-        $('results-tracks').innerHTML = tracks.map((t, i) => `
-            <div class="track-row d-flex align-items-center gap-2 py-1">
+        const s       = window.appState;
+        const openOn  = trackOpenHint();
+        const skipped = window.i18n.t('musicSkippedBadge');
+
+        const ROW = 'track-row d-flex align-items-center gap-2 py-1 px-1';
+
+        $('results-tracks').innerHTML = tracks.map((t, i) => {
+            const url   = s.trackUrl(t.videoId);
+            const title = escHtml(t.title || window.i18n.t('musicUnknown'));
+
+            // The whole row is the link, so the cover art is clickable too.
+            const open = url
+                ? `<a class="${ROW} is-linked" href="${escHtml(url)}"
+                      target="_blank" rel="noopener noreferrer" title="${escHtml(openOn)}">`
+                : `<div class="${ROW}">`;
+
+            return `${open}
                 <span class="text-body-secondary small" style="width:1.25rem">${i + 1}</span>
                 ${t.thumb ? `<img src="${escHtml(t.thumb)}" alt="" onerror="this.remove()">` : ''}
-                <div class="min-w-0">
-                    <div class="small fw-semibold text-truncate">${escHtml(t.title)}</div>
-                    <div class="small text-body-secondary text-truncate">${escHtml(t.artist)}</div>
-                </div>
-            </div>`).join('');
+                <span class="min-w-0">
+                    <span class="track-link d-block small fw-semibold text-truncate">${title}</span>
+                    <span class="d-block small text-body-secondary text-truncate">${escHtml(t.artist)}</span>
+                </span>
+                ${t.skipped ? `<span class="badge rounded-pill text-bg-light ms-auto flex-shrink-0">${escHtml(skipped)}</span>` : ''}
+            ${url ? '</a>' : '</div>'}`;
+        }).join('');
     }
 
     /* Chrome: nav highlight and action bar */

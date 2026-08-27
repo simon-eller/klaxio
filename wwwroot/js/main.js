@@ -190,6 +190,11 @@
         $('btn-reveal').addEventListener('click',         window.music.reveal);
         $('btn-reveal-correct').addEventListener('click', window.music.correct);
         $('btn-reveal-wrong').addEventListener('click',   window.music.wrong);
+        $('btn-reveal-close').addEventListener('click',   window.music.dismissSkipReveal);
+        $('btn-reveal-next').addEventListener('click',    () => {
+            window.music.dismissSkipReveal();
+            window.music.play();
+        });
 
         $('progress-wrap').addEventListener('click', e => {
             if (!window.ytPlayer.isPlaying()) return;

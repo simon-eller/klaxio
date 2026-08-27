@@ -119,6 +119,13 @@
   <data name="ui.toastMusicCorrect"  xml:space="preserve"><value>Correct! {0} gets a point.</value></data>
   <data name="ui.toastMusicWrong"    xml:space="preserve"><value>Wrong! Every other player gets a point.</value></data>
   <data name="ui.toastMusicSkipped"  xml:space="preserve"><value>Song skipped.</value></data>
+  <data name="ui.toastMusicSkippedTrack" xml:space="preserve"><value>Skipped: {0}</value></data>
+  <data name="ui.musicSkippedBadge"  xml:space="preserve"><value>skipped</value></data>
+  <data name="ui.musicSkippedTitle"  xml:space="preserve"><value>Song skipped</value></data>
+  <data name="ui.btnNextSong"        xml:space="preserve"><value>Next song</value></data>
+  <data name="ui.btnClose"           xml:space="preserve"><value>Close</value></data>
+  <data name="ui.trackOpenYt"        xml:space="preserve"><value>Open on YouTube</value></data>
+  <data name="ui.trackOpenYtMusic"   xml:space="preserve"><value>Open on YouTube Music</value></data>
   <data name="ui.errNoUrl"           xml:space="preserve"><value>Please enter a YouTube playlist URL.</value></data>
   <data name="ui.errPlaylistId"      xml:space="preserve"><value>Could not read the playlist ID. The URL must contain ?list=...</value></data>
   <data name="ui.errPlayerReady"     xml:space="preserve"><value>YouTube player not ready yet - please wait a moment and try again.</value></data>

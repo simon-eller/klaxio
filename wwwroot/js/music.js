@@ -96,6 +96,10 @@
         if (msg.phase === 'buzzed'  && prev !== 'buzzed')  pauseForBuzz(msg);
         if (msg.phase === 'reveal'  && prev !== 'reveal')  revealTrack();
 
+        // A skipped song is revealed too - it has to be read before finishRound
+        // stops the player and moves on to the next entry.
+        if (msg.outcome === 'skip') revealTrack(true);
+
         if (msg.outcome === 'correct' || msg.outcome === 'wrong' || msg.outcome === 'skip')
             finishRound(msg.outcome, msg.buzzerName);
 
@@ -127,6 +131,7 @@
         const s = window.appState;
         s.currentTrack  = null;
         s.trackRevealed = false;
+        s.skipRevealed  = false;
         window.ui.setProgress(0);
 
         if (!window.ytPlayer.hasPlaylist()) {
@@ -142,29 +147,45 @@
         if (msg.buzzerName) window.ui.toast(window.i18n.t('toastBuzzed', msg.buzzerName));
     }
 
-    function revealTrack() {
+    /** Unmask the running song and add it to the history. */
+    function revealTrack(skipped) {
         const s = window.appState;
 
         // The meta event may not have fired yet - read it on demand.
         if (!s.currentTrack) s.currentTrack = window.ytPlayer.getMeta();
         s.trackRevealed = true;
 
+        // A skipped song still gets its reveal card, just without an evaluation.
+        if (skipped) s.skipRevealed = !!(s.currentTrack && s.currentTrack.title);
+
         if (s.currentTrack && !s.currentTrack.logged) {
             s.playedTracks.push({
-                title:  s.currentTrack.title,
-                artist: s.currentTrack.artist,
-                thumb:  s.currentTrack.thumb,
+                title:   s.currentTrack.title,
+                artist:  s.currentTrack.artist,
+                thumb:   s.currentTrack.thumb,
+                videoId: s.currentTrack.videoId,
+                skipped: !!skipped,
             });
             s.currentTrack.logged = true;
         }
     }
 
+    /** "Title - Artist" of the current track, or null while nothing is known. */
+    function trackLabel() {
+        const track = window.appState.currentTrack;
+        if (!track || !track.title) return null;
+        return track.artist ? `${track.title} - ${track.artist}` : track.title;
+    }
+
     function finishRound(outcome, buzzerName) {
+        const skippedLabel = outcome === 'skip' ? trackLabel() : null;
+
         window.ytPlayer.stop();
         window.ui.setWave(false);
 
         if (outcome === 'correct')   window.ui.toast(window.i18n.t('toastMusicCorrect', buzzerName));
         else if (outcome === 'wrong') window.ui.toast(window.i18n.t('toastMusicWrong'));
+        else if (skippedLabel)        window.ui.toast(window.i18n.t('toastMusicSkippedTrack', skippedLabel));
         else                          window.ui.toast(window.i18n.t('toastMusicSkipped'));
 
         window.ytPlayer.advance(1);
@@ -220,9 +241,16 @@
         else if (phase === 'buzzed'  && k === 'r') reveal();
     }
 
+    /** Close the reveal card of a skipped song without starting the next one. */
+    function dismissSkipReveal() {
+        window.appState.skipRevealed = false;
+        window.ui.render();
+    }
+
     window.music = {
         ensurePlaylist, validatePlaylist, saveSettings, startGame,
         play, skip, reveal, correct, wrong, restart, finish,
+        dismissSkipReveal,
         handleState, handleConfig, wireYouTube, handleKey,
     };
 })();

@@ -437,17 +437,22 @@
     <div id="reveal-overlay" class="overlay">
         <div class="reveal-card card border rounded-4">
             <div class="card-body text-center">
-                <div class="reveal-buzzer badge rounded-pill text-bg-warning mb-3 icon-link">
+                <div id="reveal-buzzer" class="reveal-buzzer badge rounded-pill text-bg-warning mb-3 icon-link">
                     <span class="material-symbols-outlined fs-6" aria-hidden="true">person</span>
                     <span id="reveal-buzzer-name">&mdash;</span>
                     <span class="fw-normal ms-1" data-i18n="musicBuzzedBy">buzzed</span>
                 </div>
+                <div id="reveal-skipped" class="reveal-buzzer badge rounded-pill text-bg-secondary mb-3 icon-link d-none">
+                    <span class="material-symbols-outlined fs-6" aria-hidden="true">skip_next</span>
+                    <span data-i18n="musicSkippedTitle">Song skipped</span>
+                </div>
                 <br>
                 <img id="reveal-thumb" class="reveal-thumb mb-3" src="" alt="">
-                <h2 id="reveal-title" class="fw-bold fs-3 mb-1">&mdash;</h2>
+                <h2 class="fw-bold fs-3 mb-1"><a id="reveal-title" class="track-link" href="#"
+                       target="_blank" rel="noopener noreferrer">&mdash;</a></h2>
                 <p id="reveal-artist" class="text-primary fw-semibold mb-4">&mdash;</p>
 
-                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                <div id="reveal-actions" class="d-flex gap-2 justify-content-center flex-wrap">
                     <button id="btn-reveal-correct" class="btn btn-success btn-lg fw-semibold icon-link" type="button">
                         <span class="material-symbols-outlined" aria-hidden="true">thumb_up</span>
                         <span data-i18n="btnCorrect">Correct</span>
@@ -455,6 +460,17 @@
                     <button id="btn-reveal-wrong" class="btn btn-danger btn-lg fw-semibold icon-link" type="button">
                         <span class="material-symbols-outlined" aria-hidden="true">thumb_down</span>
                         <span data-i18n="btnWrong">Wrong</span>
+                    </button>
+                </div>
+
+                <div id="reveal-skip-actions" class="d-flex gap-2 justify-content-center flex-wrap d-none">
+                    <button id="btn-reveal-next" class="btn btn-primary btn-lg fw-semibold icon-link" type="button">
+                        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+                        <span data-i18n="btnNextSong">Next song</span>
+                    </button>
+                    <button id="btn-reveal-close" class="btn btn-outline-secondary btn-lg fw-semibold icon-link" type="button">
+                        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                        <span data-i18n="btnClose">Close</span>
                     </button>
                 </div>
             </div>
