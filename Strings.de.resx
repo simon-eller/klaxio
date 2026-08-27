@@ -24,6 +24,12 @@
   <data name="QuizReset"         xml:space="preserve"><value>[QUIZ] Neue Frage.</value></data>
   <data name="QuizResetScores"   xml:space="preserve"><value>[QUIZ] Punktestand zurückgesetzt.</value></data>
   <data name="QuizFinished"      xml:space="preserve"><value>[QUIZ] Spiel beendet - zeige Ergebnisse.</value></data>
+  <data name="PlaylistsLoaded"        xml:space="preserve"><value>[MUSIC] {0} vorgefertigte Playlists in {1} Kategorien aus {2} geladen</value></data>
+  <data name="PlaylistsNone"          xml:space="preserve"><value>[MUSIC] Keine playlists.json gefunden - die Auswahl bleibt leer.</value></data>
+  <data name="PlaylistsInvalid"       xml:space="preserve"><value>[MUSIC] {0} ist kein gültiges JSON: {1}</value></data>
+  <data name="PlaylistsReadFailed"    xml:space="preserve"><value>[MUSIC] {0} konnte nicht gelesen werden: {1}</value></data>
+  <data name="PlaylistsNoCover"       xml:space="preserve"><value>[MUSIC] Kein Cover für "{0}" gefunden</value></data>
+  <data name="PlaylistsLookupFailed"  xml:space="preserve"><value>[MUSIC] Kein Cover für "{0}": {1}</value></data>
   <data name="MusicConfig"       xml:space="preserve"><value>[MUSIC] Playlist: {0} ({1} Runden)</value></data>
   <data name="MusicStarted"      xml:space="preserve"><value>[MUSIC] Spiel mit {0} Runden gestartet.</value></data>
   <data name="MusicRoundStart"   xml:space="preserve"><value>[MUSIC] Runde {0} / {1}</value></data>
@@ -95,6 +101,10 @@
   <!-- Klaxio Music -->
   <data name="ui.musicSettingsTitle" xml:space="preserve"><value>Playlist</value></data>
   <data name="ui.musicSettingsHint"  xml:space="preserve"><value>Wähle die YouTube-Playlist, mit der gespielt wird.</value></data>
+  <data name="ui.musicPresetsLabel"       xml:space="preserve"><value>Vorgefertigte Playlists</value></data>
+  <data name="ui.musicPresetsHint"        xml:space="preserve"><value>Wähle eine davon aus oder gib unten eine eigene Playlist ein.</value></data>
+  <data name="ui.musicPresetsLoading"     xml:space="preserve"><value>Playlists werden geladen ...</value></data>
+  <data name="ui.musicPresetsEmpty"       xml:space="preserve"><value>Keine vorgefertigten Playlists hinterlegt. Sie werden in der playlists.json neben der App gepflegt.</value></data>
   <data name="ui.musicPlaylistLabel" xml:space="preserve"><value>YouTube oder YouTube Music Playlist-URL</value></data>
   <data name="ui.musicRounds"        xml:space="preserve"><value>Runden</value></data>
   <data name="ui.btnValidate"        xml:space="preserve"><value>Prüfen</value></data>

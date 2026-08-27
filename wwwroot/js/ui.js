@@ -328,6 +328,67 @@
         $('rounds-val').textContent  = s.config.rounds;
     }
 
+    /**
+     * The curated playlists from playlists.json, grouped by category.
+     * A tile carries its playlist URL, which is what selecting one fills in.
+     */
+    function renderPlaylistPresets() {
+        const wrap = $('playlist-presets');
+        if (!wrap) return;
+
+        const catalog = window.appState.playlistCatalog;
+        if (!catalog) {
+            wrap.innerHTML = `<div class="text-body-secondary small">${escHtml(window.i18n.t('musicPresetsLoading'))}</div>`;
+            return;
+        }
+
+        const categories = (catalog.categories || []).filter(c => (c.playlists || []).length);
+        if (!categories.length) {
+            wrap.innerHTML = `<div class="text-body-secondary small">${escHtml(window.i18n.t('musicPresetsEmpty'))}</div>`;
+            return;
+        }
+
+        wrap.innerHTML = categories.map(category => {
+            const heading = category.name
+                ? `<h3 class="preset-group-title small fw-semibold text-body-secondary icon-link mb-2">
+                       <span class="material-symbols-outlined fs-6" aria-hidden="true">${escHtml(category.icon || 'queue_music')}</span>
+                       <span>${escHtml(category.name)}</span>
+                   </h3>`
+                : '';
+            return `<div class="preset-group">${heading}
+                        <div class="preset-grid">${category.playlists.map(presetTile).join('')}</div>
+                    </div>`;
+        }).join('');
+
+        markSelectedPreset();
+    }
+
+    function presetTile(entry) {
+        const name = entry.name || entry.url;
+        const cover = entry.thumbnail
+            ? `<img src="${escHtml(entry.thumbnail)}" alt="" loading="lazy" onerror="this.remove()">`
+            : '';
+        return `
+            <button type="button" class="preset-tile" data-preset-url="${escHtml(entry.url)}" title="${escHtml(name)}">
+                <span class="preset-cover">
+                    ${cover}
+                    <span class="material-symbols-outlined preset-cover-icon" aria-hidden="true">music_note</span>
+                    <span class="material-symbols-outlined preset-check" aria-hidden="true">check_circle</span>
+                </span>
+                <span class="preset-name text-truncate">${escHtml(name)}</span>
+            </button>`;
+    }
+
+    /** Outline the tile whose playlist is the one currently in the URL field. */
+    function markSelectedPreset() {
+        const field   = $('playlist-url');
+        const current = field ? field.value.trim() : '';
+
+        document.querySelectorAll('#playlist-presets .preset-tile').forEach(tile => {
+            tile.classList.toggle('selected', !!current && tile.dataset.presetUrl === current);
+        });
+    }
+
     function showPlaylistOk(text) {
         $('playlist-ok-text').textContent = text;
         show($('playlist-ok'), true);
@@ -529,7 +590,10 @@
     }
 
     // setConnState owns #conn-text, so it has to be re-run after a language switch.
-    window.i18n.onChange(() => setConnState(window.appState.connected));
+    window.i18n.onChange(() => {
+        setConnState(window.appState.connected);
+        renderPlaylistPresets();
+    });
 
     window.ui = {
         render,
@@ -539,6 +603,8 @@
         bumpScores,
         highlightPlayer,
         fillMusicSettings,
+        renderPlaylistPresets,
+        markSelectedPreset,
         showPlaylistOk,
         showPlaylistError,
         clearPlaylistFeedback,

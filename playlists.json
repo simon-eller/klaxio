@@ -1,0 +1,39 @@
+{
+  "_comment": "Curated playlists for Klaxio Music. Edit this file next to klaxio.exe - a browser reload picks up the changes. Only 'url' is required: name and cover art are looked up from YouTube when omitted. 'icon' is any Material Symbols name.",
+  "categories": [
+    {
+      "name": "Charts",
+      "icon": "trending_up",
+      "playlists": [
+        {"name":"Weekly top 100 global", "url":"https://music.youtube.com/playlist?list=PL4fGSI1pDJn5kI81J1fYWK5eZRl1zJ5kM"},
+        {"name":"Pop Hotlist", "url":"https://music.youtube.com/playlist?list=RDCLAK5uy_npj3EI5VV_uv_GdeeNgVpsGe5n_9YwzoI"},
+        {"name":"Classic Rock's Greatest Hits", "url":"https://music.youtube.com/playlist?list=RDCLAK5uy_nZiG9ehz_MQoWQxY5yElsLHCcG0tv9PRg"},
+        {"name":"Schlagerperlen", "url":"https://music.youtube.com/playlist?list=RDCLAK5uy_mTKho9b7fMrAXOYXKCRCoowKDYvuIVpMQ"},
+        {"name":"Latin Now", "url":"https://music.youtube.com/playlist?list=RDCLAK5uy_lOAAW-PX5XUed76iQefCxkOXd6m6ZvyiM"},
+        {"name":"Current Hip Hop Hits", "url":"https://music.youtube.com/playlist?list=RDCLAK5uy_lBGRuQnsG37Akr1CY4SxL0VWFbPrbO4gs"},
+        {"name":"Classical Solo Piano", "url":"https://music.youtube.com/playlist?list=RDCLAK5uy_kmK1aMjb7sJ6eWV95Co02JwJJmdi0z05M"}
+      ]
+    },
+    {
+      "name": "Genres",
+      "icon": "graphic_eq",
+      "playlists": [
+        {"name":"2010s Pop", "url":"https://music.youtube.com/playlist?list=PLZeIMqhophAc"},
+        {"name":"Latin", "url":"https://music.youtube.com/playlist?list=PLDv9rjGAdiLo"}
+      ]
+    },
+    {
+      "name": "Decades",
+      "icon": "date_range",
+      "playlists": [
+        {"name":"1960s", "url":"https://music.youtube.com/playlist?list=PLd3bq4456yG4"},
+        {"name":"1970s", "url":"https://music.youtube.com/playlist?list=PLTA7lNVU9xuA"},
+        {"name":"1980s", "url":"https://music.youtube.com/playlist?list=PLWuhOEnT4E0g"},
+        {"name":"1990s", "url":"https://music.youtube.com/playlist?list=PLMKmmqOJ4rQg"},
+        {"name":"2000s", "url":"https://music.youtube.com/playlist?list=PLZP5Sv-xi80M"},
+        {"name":"2010s", "url":"https://music.youtube.com/playlist?list=PLSJjDG8b1fZ4"},
+        {"name":"2020s", "url":"https://music.youtube.com/playlist?list=PLUV766u3JvXI"}
+      ]
+    }
+  ]
+}

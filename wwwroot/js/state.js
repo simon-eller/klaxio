@@ -24,6 +24,9 @@
 
         config: { playlistUrl: '', rounds: 10 },
 
+        // Curated playlists from playlists.json; null until fetched once
+        playlistCatalog: null,
+
         registerOpen: false,
 
         // Klaxio Music track handling: metadata is kept hidden until the reveal

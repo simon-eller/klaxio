@@ -465,3 +465,99 @@ a.track-link[href]:focus-visible {
 #yt-error.show {
     display: flex;
 }
+
+/* Curated playlist picker (Klaxio Music settings) */
+.preset-group + .preset-group {
+    margin-top: 1rem;
+}
+
+.preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+    gap: .75rem;
+}
+
+.preset-tile {
+    background: none;
+    border: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    min-width: 0;
+    text-align: center;
+    color: inherit;
+}
+
+.preset-cover {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--bs-border-radius);
+    border: 2px solid var(--bs-border-color);
+    background-color: var(--bs-secondary-bg);
+    transition: border-color .15s ease, transform .15s ease;
+}
+
+.preset-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sits behind the cover art and shows through when there is none */
+.preset-cover-icon {
+    position: absolute;
+    color: var(--bs-secondary-color);
+    font-size: 1.75rem;
+}
+
+.preset-cover img + .preset-cover-icon {
+    display: none;
+}
+
+.preset-name {
+    font-size: .8rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.preset-tile:hover .preset-cover,
+.preset-tile:focus-visible .preset-cover {
+    border-color: var(--bs-primary);
+    transform: translateY(-2px);
+}
+
+.preset-tile:focus-visible {
+    outline: none;
+}
+
+.preset-tile:focus-visible .preset-name {
+    text-decoration: underline;
+}
+
+.preset-check {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .45);
+}
+
+.preset-tile.selected .preset-cover {
+    border-color: var(--bs-primary);
+}
+
+.preset-tile.selected .preset-check {
+    display: flex;
+}
+
+.preset-tile.selected .preset-name {
+    color: var(--bs-primary);
+}

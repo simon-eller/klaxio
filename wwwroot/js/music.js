@@ -18,6 +18,35 @@
         }
     }
 
+    /**
+     * Fetch the curated playlists once per page load. A failure is not fatal -
+     * the settings screen then simply offers the URL field on its own.
+     */
+    async function loadPresets() {
+        const s = window.appState;
+        window.ui.renderPlaylistPresets();
+        if (s.playlistCatalog) return;
+
+        try {
+            const res = await fetch('/api/playlists');
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            s.playlistCatalog = await res.json();
+        } catch (e) {
+            console.error('[music] playlist catalogue failed', e);
+            s.playlistCatalog = { categories: [] };
+        }
+        window.ui.renderPlaylistPresets();
+    }
+
+    /** Clicking a tile just fills the URL field - Save still applies it. */
+    function selectPreset(url) {
+        const field = document.getElementById('playlist-url');
+        if (!field) return;
+        field.value = url;
+        window.ui.clearPlaylistFeedback();
+        window.ui.markSelectedPreset();
+    }
+
     async function validatePlaylist() {
         const url = document.getElementById('playlist-url').value.trim();
         if (!url) { window.ui.showPlaylistError(window.i18n.t('errNoUrl')); return; }
@@ -252,6 +281,7 @@
 
     window.music = {
         ensurePlaylist, validatePlaylist, saveSettings, startGame,
+        loadPresets, selectPreset,
         play, skip, reveal, correct, wrong, restart, finish,
         dismissSkipReveal,
         handleState, handleConfig, wireYouTube, handleKey,

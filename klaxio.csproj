@@ -19,6 +19,10 @@
   <ItemGroup>
     <EmbeddedResource Include="frontend.html" />
     <EmbeddedResource Include="wwwroot\**\*" />
+    <!-- Shipped next to the exe so it can be maintained without a rebuild;
+         the embedded copy is the fallback when that file is deleted. -->
+    <EmbeddedResource Include="playlists.json" />
+    <None Include="playlists.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

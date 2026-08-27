@@ -13,6 +13,7 @@ It ships with two games modes
 * **Multiplayer**: Play with two or more Echo Buttons.
 * **Final Ranking**: Reveal a podium at the end of a game.
 * **Keyboard Hotkeys**: Control the flow of the game as the host without using your mouse.
+* **Curated playlists**: Offer your own set of ready-made playlists, maintained in a simple JSON file.
 * **Bilingual**: English and German are supported.
 
 ## 🚀 Installation & Setup
@@ -58,12 +59,51 @@ You can reopen this screen at any time via **Settings → Players and buttons**,
 5. **End Game:** Reveals the podium and the full ranking.
 
 ### Music Quiz
-1. Pick a YouTube playlist under **Settings → Klaxio Music** (paste any YouTube or YouTube Music playlist URL and choose how many rounds to play). The playlist is validated and shuffled straight away.
+1. Pick a playlist under **Settings → Klaxio Music**: either click one of the ready-made playlists (see [Curated playlists](#-curated-playlists)) or paste any YouTube or YouTube Music playlist URL. Choose how many rounds to play. The playlist is validated and shuffled straight away.
 2. Press **Start game** on the Klaxio Music board. The first track starts playing right away.
 3. **Play Song** starts every following track. Title, artist and cover art stay hidden while it plays.
 4. The first player to buzz gets to answer; **Show Answer** then reveals the track.
 5. **Correct** gives the buzzing player a point, **Wrong** gives a point to everybody else.
 6. After the last round the podium appears, together with a list of every track that was played.
+
+## 🎵 Curated playlists
+The playlists offered on the settings screen live in **`playlists.json`**, in the same folder as
+`klaxio-win-x86.exe`. Edit that file and reload the browser - no rebuild and no restart needed.
+
+**Downloading the exe is enough.** A copy of the list is built into the executable, so the ready-made
+playlists work out of the box without any extra file. Only add `playlists.json` next to the exe if you
+want to replace that built-in list with your own - the file then takes over completely.
+
+```json
+{
+  "categories": [
+    {
+      "name": "Charts",
+      "icon": "trending_up",
+      "playlists": [
+        { "name": "Popular Music Videos", "url": "https://www.youtube.com/playlist?list=PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI" },
+        { "url": "https://music.youtube.com/playlist?list=PL15B1E77BB5708555" }
+      ]
+    }
+  ]
+}
+```
+
+| Field | Required | Meaning |
+| --- | --- | --- |
+| `categories[].name` | no | Heading above the row of tiles. |
+| `categories[].icon` | no | Any [Material Symbols](https://fonts.google.com/icons) name, e.g. `trending_up`. Defaults to `queue_music`. |
+| `playlists[].url` | **yes** | YouTube or YouTube Music playlist URL. |
+| `playlists[].name` | no | Label under the tile. Falls back to the playlist title on YouTube - handy to shorten long ones. |
+| `playlists[].thumbnail` | no | Cover image URL. Falls back to the playlist's cover art on YouTube. |
+
+Missing names and cover art are read once from the playlist page on YouTube and then cached, so entries
+usually only need a `url`. For a YouTube Music playlist this is its real cover art; for an ordinary playlist
+it is the same cover YouTube itself shows, which is the first video's image. Setting `thumbnail` yourself
+skips the lookup entirely. If a lookup fails the tile still works - it just shows a placeholder cover.
+Playlists listed twice are ignored, and if `playlists.json` is deleted the copy built into the executable is used
+again. A file that is not valid JSON leaves the selection empty rather than silently falling back - the console
+says which file failed and why.
 
 ### Host Controls (Keyboard Shortcuts)
 The shortcuts follow whichever game is on screen. They work in the browser window and in the console window.

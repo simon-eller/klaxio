@@ -35,6 +35,7 @@
             case 'screen-music-settings':
                 window.ui.clearPlaylistFeedback();
                 window.ui.fillMusicSettings();
+                window.music.loadPresets();
                 break;
         }
 
@@ -210,7 +211,15 @@
         const slider = $('rounds-slider');
         slider.addEventListener('input', () => { $('rounds-val').textContent = slider.value; });
 
-        $('playlist-url').addEventListener('input', window.ui.clearPlaylistFeedback);
+        $('playlist-url').addEventListener('input', () => {
+            window.ui.clearPlaylistFeedback();
+            window.ui.markSelectedPreset();   // typing may match (or leave) a tile
+        });
+
+        $('playlist-presets').addEventListener('click', e => {
+            const tile = e.target.closest('[data-preset-url]');
+            if (tile) window.music.selectPreset(tile.dataset.presetUrl);
+        });
     }
 
     function wireResultsScreen() {

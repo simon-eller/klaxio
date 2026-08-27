@@ -19,6 +19,7 @@ namespace Klaxio
     class WebSocketServer
     {
         readonly GameHub         _game;
+        readonly PlaylistCatalog _catalog    = new PlaylistCatalog();
         readonly List<WebSocket> _clients    = new List<WebSocket>();
         readonly object          _clientLock = new object();
 
@@ -58,6 +59,10 @@ namespace Klaxio
 
             _ = Task.Run(ConsoleInputLoop);
 
+            // Cover art comes from YouTube and takes a moment. Fetching it now
+            // means the settings screen finds the catalogue ready.
+            _ = _catalog.GetJsonAsync();
+
             while (true)
             {
                 var ctx = await listener.GetContextAsync();
@@ -65,16 +70,27 @@ namespace Klaxio
                 if (ctx.Request.IsWebSocketRequest)
                     _ = Task.Run(() => HandleClientAsync(ctx));
                 else
-                    _ = Task.Run(() => ServeHttp(ctx));
+                    _ = ServeHttp(ctx);
             }
         }
 
-        /// <summary>Serves wwwroot assets; every other path falls back to the SPA shell.</summary>
-        void ServeHttp(HttpListenerContext ctx)
+        /// <summary>Serves the playlist catalogue and wwwroot assets; every other path falls back to the SPA shell.</summary>
+        async Task ServeHttp(HttpListenerContext ctx)
         {
             try
             {
                 var path = ctx.Request.Url.AbsolutePath.TrimStart('/');
+
+                if (path == "api/playlists")
+                {
+                    var json = await _catalog.GetJsonAsync();
+                    var body = Encoding.UTF8.GetBytes(json);
+                    ctx.Response.ContentType     = "application/json; charset=utf-8";
+                    ctx.Response.ContentLength64 = body.Length;
+                    await ctx.Response.OutputStream.WriteAsync(body, 0, body.Length);
+                    ctx.Response.Close();
+                    return;
+                }
 
                 if (path.StartsWith("wwwroot/") || path.StartsWith("css/") || path.StartsWith("fonts/")
                     || path.StartsWith("img/") || path.StartsWith("js/"))
