@@ -43,7 +43,7 @@
         window.appState.savePlaylistUrl(url);
         send('music_config', { playlistUrl: url, rounds });
         window.ui.toast(window.i18n.t('musicSaved'));
-        window.ui.showScreen('screen-music');
+        window.nav.go('screen-music');
     }
 
     /* Host actions */
@@ -89,7 +89,9 @@
         if (msg.outcome === 'start') {
             s.resetTracks();
             window.ui.setProgress(0);
-            ensurePlaylist();
+            // Starting the game already opens round one, and startSong loads the
+            // playlist itself - only fetch it here when no song is coming up.
+            if (msg.phase !== 'playing') ensurePlaylist();
         }
 
         if (msg.phase === 'playing' && prev !== 'playing') startSong();
@@ -127,15 +129,16 @@
         }
     }
 
-    function startSong() {
+    async function startSong() {
         const s = window.appState;
         s.currentTrack  = null;
         s.trackRevealed = false;
         s.skipRevealed  = false;
         window.ui.setProgress(0);
 
-        if (!window.ytPlayer.hasPlaylist()) {
-            window.ui.toast(window.i18n.t('errNoPlaylist'));
+        // A browser that just joined may not hold the playlist yet.
+        if (!(await ensurePlaylist())) {
+            if (!s.config.playlistUrl) window.ui.toast(window.i18n.t('errNoPlaylist'));
             return;
         }
         window.ytPlayer.playCurrent();

@@ -271,11 +271,12 @@ namespace Klaxio
                         if (ActivePlayers().Count < 2) return null;
                         if (string.IsNullOrWhiteSpace(_music.PlaylistUrl)) return null;
                         _players.ForEach(p => p.MusicScore = 0);
-                        _musicRound  = 0;
                         _musicBuzzer = null;
-                        _musicPhase  = MusicPhase.Waiting;
+                        // Starting a music game hands the buttons to it, whichever
+                        // way the host reached the board.
+                        _mode = AppMode.Music;
                         Console.WriteLine(L.Get("MusicStarted", _music.Rounds));
-                        return BuildMusicState("start");
+                        return StartFirstRound();
 
                     case "music_play":
                         if (_musicPhase != MusicPhase.Waiting) return null;
@@ -329,10 +330,8 @@ namespace Klaxio
 
                     case "music_restart":
                         _players.ForEach(p => p.MusicScore = 0);
-                        _musicRound  = 0;
                         _musicBuzzer = null;
-                        _musicPhase  = MusicPhase.Waiting;
-                        return BuildMusicState("start");
+                        return StartFirstRound();
 
                     case "music_finish":
                         if (_musicPhase == MusicPhase.Idle || _musicPhase == MusicPhase.Over) return null;
@@ -386,6 +385,18 @@ namespace Klaxio
             bump       = bump ?? Array.Empty<string>(),
             players    = PlayerDtos()
         };
+
+        /// <summary>
+        /// Opens round one right away: starting a game already means "play the
+        /// first song", so the host does not have to hit Play Song on top of it.
+        /// </summary>
+        object StartFirstRound()
+        {
+            _musicRound = 1;
+            _musicPhase = MusicPhase.Playing;
+            Console.WriteLine(L.Get("MusicRoundStart", _musicRound, _music.Rounds));
+            return BuildMusicState("start");
+        }
 
         object BuildMusicState(string outcome = null, Player buzzer = null, string[] bump = null)
         {

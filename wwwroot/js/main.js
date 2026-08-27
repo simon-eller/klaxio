@@ -241,6 +241,10 @@
         window.wsClient.on('message', handleServerEvent);
     }
 
+    // Screen changes that also have to tell the server what the buttons are for
+    // must go through navigate() rather than ui.showScreen().
+    window.nav = { go: navigate };
+
     document.addEventListener('DOMContentLoaded', () => {
         wireNavigation();
         wireRegisterScreen();

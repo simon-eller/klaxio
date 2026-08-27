@@ -59,8 +59,8 @@ You can reopen this screen at any time via **Settings → Players and buttons**,
 
 ### Music Quiz
 1. Pick a YouTube playlist under **Settings → Klaxio Music** (paste any YouTube or YouTube Music playlist URL and choose how many rounds to play). The playlist is validated and shuffled straight away.
-2. Press **Start game** on the Klaxio Music board.
-3. **Play Song** starts the next track. Title, artist and cover art stay hidden while it plays.
+2. Press **Start game** on the Klaxio Music board. The first track starts playing right away.
+3. **Play Song** starts every following track. Title, artist and cover art stay hidden while it plays.
 4. The first player to buzz gets to answer; **Show Answer** then reveals the track.
 5. **Correct** gives the buzzing player a point, **Wrong** gives a point to everybody else.
 6. After the last round the podium appears, together with a list of every track that was played.
