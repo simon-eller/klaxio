@@ -20,7 +20,7 @@
   <data name="WsClientDisconn"   xml:space="preserve"><value>[WS] Client getrennt: {0}</value></data>
   <data name="QuizArmed"         xml:space="preserve"><value>[QUIZ] Buzzers freigegeben.</value></data>
   <data name="QuizCorrect"       xml:space="preserve"><value>[QUIZ] Richtig! {0} bekommt einen Punkt → {1}</value></data>
-  <data name="QuizWrong"         xml:space="preserve"><value>[QUIZ] Falsch! {0} bekommt keinen Punkt.</value></data>
+  <data name="QuizWrong"         xml:space="preserve"><value>[QUIZ] Falsch! Alle außer {0} bekommen einen Punkt.</value></data>
   <data name="QuizReset"         xml:space="preserve"><value>[QUIZ] Neue Frage.</value></data>
   <data name="QuizResetScores"   xml:space="preserve"><value>[QUIZ] Punktestand zurückgesetzt.</value></data>
   <data name="QuizFinished"      xml:space="preserve"><value>[QUIZ] Spiel beendet - zeige Ergebnisse.</value></data>
@@ -117,7 +117,7 @@
   <data name="ui.musicUnknown"       xml:space="preserve"><value>???</value></data>
   <data name="ui.musicSeekHint"      xml:space="preserve"><value>Zum Spulen klicken</value></data>
   <data name="ui.toastMusicCorrect"  xml:space="preserve"><value>Richtig! {0} bekommt einen Punkt.</value></data>
-  <data name="ui.toastMusicWrong"    xml:space="preserve"><value>Falsch! Alle anderen bekommen einen Punkt.</value></data>
+  <data name="ui.toastWrongOthers"   xml:space="preserve"><value>Falsch! Alle anderen bekommen einen Punkt.</value></data>
   <data name="ui.toastMusicSkipped"  xml:space="preserve"><value>Song übersprungen.</value></data>
   <data name="ui.toastMusicSkippedTrack" xml:space="preserve"><value>Übersprungen: {0}</value></data>
   <data name="ui.musicSkippedBadge"  xml:space="preserve"><value>übersprungen</value></data>

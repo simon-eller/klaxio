@@ -219,10 +219,15 @@ namespace Klaxio
                         return BuildQuizState(new[] { _quizWinner.Id });
 
                     case "quiz_wrong":
+                    {
                         if (_quizPhase != QuizPhase.Buzzed || _quizWinner == null) return null;
+                        // A wrong answer hands the point to everybody else, just like in Klaxio Music.
+                        var others = ActivePlayers().Where(p => p.Id != _quizWinner.Id).ToList();
+                        others.ForEach(p => p.QuizScore++);
                         _quizPhase = QuizPhase.Wrong;
                         Console.WriteLine(L.Get("QuizWrong", _quizWinner.Name));
-                        return BuildQuizState();
+                        return BuildQuizState(others.Select(p => p.Id).ToArray());
+                    }
 
                     case "quiz_reset":
                         _quizPhase  = QuizPhase.Waiting;

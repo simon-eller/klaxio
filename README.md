@@ -54,7 +54,7 @@ You can reopen this screen at any time via **Settings → Players and buttons**,
 1. **READY:** Standby. Ask your question.
 2. **BUZZ!:** Unlock the buzzers. The first player to hit their Echo Button locks out everyone else.
 3. **BUZZED:** That player answers.
-4. **CORRECT / WRONG:** You judge the answer. Correct gives the player a point.
+4. **CORRECT / WRONG:** You judge the answer. **Correct** gives the buzzing player a point, **Wrong** gives a point to everybody else.
 5. **End Game:** Reveals the podium and the full ranking.
 
 ### Music Quiz
@@ -72,7 +72,7 @@ The shortcuts follow whichever game is on screen. They work in the browser windo
 | --- | --- | --- |
 | <kbd>Space</kbd> / <kbd>Enter</kbd> / <kbd>A</kbd> | Unlock buzzers | Play the next song |
 | <kbd>+</kbd> / <kbd>1</kbd> / <kbd>C</kbd> | Correct (+1 point) | Correct (+1 point) |
-| <kbd>-</kbd> / <kbd>0</kbd> / <kbd>W</kbd> | Wrong | Wrong (point for everybody else) |
+| <kbd>-</kbd> / <kbd>0</kbd> / <kbd>W</kbd> | Wrong (point for everybody else) | Wrong (point for everybody else) |
 | <kbd>S</kbd> | – | Skip the current song |
 | <kbd>R</kbd> | New question | Reveal the answer |
 | <kbd>Q</kbd> | Quit (in the console window) | Quit (in the console window) |

@@ -184,7 +184,7 @@
         window.ui.setWave(false);
 
         if (outcome === 'correct')   window.ui.toast(window.i18n.t('toastMusicCorrect', buzzerName));
-        else if (outcome === 'wrong') window.ui.toast(window.i18n.t('toastMusicWrong'));
+        else if (outcome === 'wrong') window.ui.toast(window.i18n.t('toastWrongOthers'));
         else if (skippedLabel)        window.ui.toast(window.i18n.t('toastMusicSkippedTrack', skippedLabel));
         else                          window.ui.toast(window.i18n.t('toastMusicSkipped'));
 

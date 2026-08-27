@@ -39,6 +39,9 @@
 
         if (msg.phase === 'buzzed' && prev !== 'buzzed' && msg.winnerName)
             window.ui.toast(window.i18n.t('toastBuzzed', msg.winnerName));
+
+        if (msg.phase === 'wrong' && prev !== 'wrong')
+            window.ui.toast(window.i18n.t('toastWrongOthers'));
     }
 
     /** Host shortcuts, active only while the Klaxio board is on screen. */

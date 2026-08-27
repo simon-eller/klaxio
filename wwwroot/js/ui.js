@@ -79,19 +79,19 @@
     }
 
     /* Player panels */
-    function panelBg(phase, playerId, focusId, mode) {
+    // A wrong answer scores for everybody else, so their panels celebrate too.
+    function panelBg(phase, playerId, focusId) {
         const isFocus = !!focusId && playerId === focusId;
         switch (phase) {
             case 'buzzed':
             case 'reveal':  return isFocus ? 'text-bg-info' : 'text-bg-light opacity-50';
             case 'correct': return isFocus ? 'text-bg-success' : 'text-bg-light';
-            case 'wrong':   return isFocus ? 'text-bg-danger'
-                                           : (mode === 'music' ? 'text-bg-success' : 'text-bg-light');
+            case 'wrong':   return isFocus ? 'text-bg-danger' : 'text-bg-success';
             default:        return 'text-bg-light';
         }
     }
 
-    function panelIcon(phase, playerId, focusId, mode) {
+    function panelIcon(phase, playerId, focusId) {
         const isFocus = !!focusId && playerId === focusId;
         switch (phase) {
             case 'armed':
@@ -99,7 +99,7 @@
             case 'buzzed':
             case 'reveal':  return isFocus ? 'notifications_active' : 'hourglass_empty';
             case 'correct': return isFocus ? 'check_circle' : '';
-            case 'wrong':   return isFocus ? 'cancel' : (mode === 'music' ? 'add_circle' : '');
+            case 'wrong':   return isFocus ? 'cancel' : 'add_circle';
             default:        return 'radio_button_unchecked';
         }
     }
@@ -110,9 +110,9 @@
         const s = window.appState;
 
         wrap.innerHTML = s.activePlayers().map(p => {
-            const icon = panelIcon(phase, p.id, focusId, mode);
+            const icon = panelIcon(phase, p.id, focusId);
             return `
-            <div class="player-panel card border rounded-4 ${panelBg(phase, p.id, focusId, mode)}"
+            <div class="player-panel card border rounded-4 ${panelBg(phase, p.id, focusId)}"
                  id="${mode}-panel-${escHtml(p.id)}">
                 <div class="card-body d-flex flex-column align-items-center justify-content-center gap-2">
                     <div class="player-name text-truncate w-100">${escHtml(p.name)}</div>
